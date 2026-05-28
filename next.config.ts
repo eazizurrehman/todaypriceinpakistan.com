@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
   redirects() {
     return [
       {
-        source: "/:slug((?!gold-rate-today).*gold.*)",
-        destination: "/gold-rate-today",
+        source: "/:slug((?!gold/rate-today).*gold.*)",
+        destination: "/gold/rate-today",
         permanent: true,
       },
     ];

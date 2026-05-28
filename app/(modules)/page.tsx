@@ -6,7 +6,7 @@ const priceCategories = [
     title: "Gold ",
     description:
       "Live 24K, 22K, 21K, and 18K prices in Pakistan across tola and gram.",
-    href: "/gold-rate-today",
+    href: "/gold/rate-today",
     status: "Live",
     accent: "from-amber-400/25 via-amber-300/10 to-transparent",
   },
@@ -75,13 +75,13 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 className="inline-flex items-center justify-center rounded-full bg-amber-300 px-5 py-2.5 font-medium text-amber-950 text-sm hover:bg-amber-200"
-                href="/gold-rate-today"
+                href="/gold/rate-today"
               >
                 View gold rate
               </Link>
               <Link
                 className="inline-flex items-center justify-center rounded-full border bg-background/40 px-5 py-2.5 font-medium text-foreground text-sm hover:bg-background/60"
-                href="/gold-rate-today#converter"
+                href="/gold/rate-today#converter"
               >
                 Open converter
               </Link>

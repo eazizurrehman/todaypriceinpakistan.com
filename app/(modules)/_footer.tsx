@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const commodityLinks = [
-  { label: "Gold ", href: "/gold-rate-today" },
+  { label: "Gold ", href: "/gold/rate-today" },
   { label: "Silver ", href: "/silver-rate-today" },
   { label: "USD ", href: "/usd-rate-today" },
   { label: "Petrol ", href: "/petrol-rate-today" },

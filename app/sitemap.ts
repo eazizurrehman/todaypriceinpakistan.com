@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://todaypriceinpakistan.com/gold-rate-today",
+      url: "https://todaypriceinpakistan.com/gold/rate-today",
       lastModified: new Date(),
       changeFrequency: "hourly",
       priority: 0.9,

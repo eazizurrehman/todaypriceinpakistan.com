@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Live gold today price in Pakistan with 24K, 22K, 21K, 18K prices, per tola and per gram, plus market summary and converter.",
   alternates: {
-    canonical: "https://todaypriceinpakistan.com/gold-rate-today",
+    canonical: "https://todaypriceinpakistan.com/gold/rate-today",
   },
 };
 
