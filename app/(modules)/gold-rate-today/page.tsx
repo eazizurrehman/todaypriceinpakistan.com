@@ -80,27 +80,8 @@ export default function GoldRateTodayPage() {
         <div className="rounded-3xl border border-white/10 bg-[#151a22] p-6">
           Ad
         </div>
-        {/* <div className="rounded-3xl border border-white/10 bg-[#151a22] p-6">
-            <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-lg">Market Summary</h3>
-              <span className="text-white/50 text-xs">Global spot</span>
-            </div>
-            <div className="mt-6 grid gap-4">
-              {marketSummary.map((item) => (
-                <div
-                  className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
-                  key={item.label}
-                >
-                  <span className="text-sm text-white/60">{item.label}</span>
-                  <span className="font-semibold text-sm text-white">
-                    {item.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div> */}
       </section>
-      <section className="grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
+      <section className="grid gap-6">
         <div className="rounded-3xl border border-white/10 bg-[#151a22] p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h3 className="font-semibold text-lg">Gold Rate by Karat</h3>
@@ -142,36 +123,6 @@ export default function GoldRateTodayPage() {
             </table>
           </div>
         </div>
-        <div className="flex flex-col gap-6">
-          <div className="rounded-3xl border border-white/10 bg-[#151a22] p-6">
-            <h3 className="font-semibold text-lg">Quick Converter</h3>
-            <p className="mt-2 text-sm text-white/60">
-              Convert between tola, gram, and kg in PKR.
-            </p>
-            <div className="mt-5 space-y-3">
-              <input
-                className="w-full rounded-2xl border border-white/10 bg-[#0f131b] px-4 py-3 text-sm text-white outline-none"
-                defaultValue={1}
-                type="number"
-              />
-              <select className="w-full rounded-2xl border border-white/10 bg-[#0f131b] px-4 py-3 text-sm text-white">
-                <option>Per Tola (Pakistan)</option>
-                <option>Per Gram</option>
-                <option>Per 10 Grams</option>
-                <option>Per Kilogram</option>
-              </select>
-              <div className="rounded-2xl border border-[#c8972a]/40 bg-[#1a1f29] px-4 py-3 text-[#f6d58a] text-sm">
-                Estimated value: Rs. 495,660
-              </div>
-            </div>
-          </div>
-          <div className="rounded-3xl border border-[#c8972a]/50 border-dashed bg-[#151a22] p-6 text-center">
-            <p className="text-[#f6d58a] text-xs uppercase">728 × 90 Ad Slot</p>
-            <p className="mt-2 text-sm text-white/50">
-              Reserved for future monetization (AdSense or direct).
-            </p>
-          </div>
-        </div>
       </section>
       <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
         <div className="rounded-3xl border border-white/10 bg-[#151a22] p-6">
@@ -210,6 +161,49 @@ export default function GoldRateTodayPage() {
             <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-white/70 text-xs">
               Petrol Prices
             </span>
+          </div>
+        </div>
+      </section>
+      <section className="flex gap-5 *:flex-1">
+        <div className="rounded-3xl border border-white/10 bg-[#151a22] p-6">
+          <h3 className="font-semibold text-lg">Quick Converter</h3>
+          <p className="mt-2 text-sm text-white/60">
+            Convert between tola, gram, and kg in PKR.
+          </p>
+          <div className="mt-5 space-y-3">
+            <input
+              className="w-full rounded-2xl border border-white/10 bg-[#0f131b] px-4 py-3 text-sm text-white outline-none"
+              defaultValue={1}
+              type="number"
+            />
+            <select className="w-full rounded-2xl border border-white/10 bg-[#0f131b] px-4 py-3 text-sm text-white">
+              <option>Per Tola (Pakistan)</option>
+              <option>Per Gram</option>
+              <option>Per 10 Grams</option>
+              <option>Per Kilogram</option>
+            </select>
+            <div className="rounded-2xl border border-[#c8972a]/40 bg-[#1a1f29] px-4 py-3 text-[#f6d58a] text-sm">
+              Estimated value: Rs. 495,660
+            </div>
+          </div>
+        </div>
+        <div className="rounded-3xl border border-white/10 bg-[#151a22] p-6">
+          <div className="flex items-center justify-between">
+            <h3 className="font-semibold text-lg">Market Summary</h3>
+            <span className="text-white/50 text-xs">Global spot</span>
+          </div>
+          <div className="mt-6 grid gap-4">
+            {_marketSummary.map((item) => (
+              <div
+                className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                key={item.label}
+              >
+                <span className="text-sm text-white/60">{item.label}</span>
+                <span className="font-semibold text-sm text-white">
+                  {item.value}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

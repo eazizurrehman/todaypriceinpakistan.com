@@ -11,6 +11,9 @@ import { cn } from "@/lib/utils";
 const navigationItems = [
   { key: "gold", label: "Gold", href: "/gold-rate-today" },
   { key: "silver", label: "Silver", href: "/silver-rate-today" },
+  { key: "usd", label: "USD", href: "/usd-rate-today" },
+  { key: "petrol", label: "Petrol", href: "/petrol-rate-today" },
+  { key: "diesel", label: "Diesel", href: "/diesel-rate-today" },
 ];
 
 export function AppHeader() {
