@@ -58,7 +58,7 @@ export default function Home() {
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 px-6 py-10 backdrop-blur supports-backdrop-filter:bg-card/60 md:px-10">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-amber-500/10 via-transparent to-emerald-500/10" />
         <div className="relative grid items-start gap-8">
-          <div className="space-y-6">
+          <div className="space-y-10">
             <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
               Fast, clean, and frequently updated
             </p>
@@ -159,7 +159,7 @@ export default function Home() {
         </div>
       </section>
       <section className="grid gap-6">
-        <div className="space-y-4">
+        <div className="space-y-10">
           <div className="rounded-4xl border bg-card/70 p-6">
             <h3 className="font-semibold text-lg">Today at a glance</h3>
             <p className="mt-2 text-muted-foreground text-sm">

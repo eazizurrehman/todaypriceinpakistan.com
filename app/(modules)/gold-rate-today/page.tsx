@@ -2,7 +2,7 @@ import Image from "next/image";
 import { AdSlot } from "@/app/(modules)/_components/ad-slot";
 
 export const metadata = {
-  title: "Gold Today Price in Pakistan - Live 24K, 22K Price",
+  title: "Gold | Today Price in Pakistan - Live 24K, 22K, 21K, 18K prices",
   description:
     "Live gold today price in Pakistan with 24K, 22K, 21K, 18K prices, per tola and per gram, plus market summary and converter.",
   alternates: {
@@ -71,7 +71,7 @@ export default function GoldRateTodayPage() {
     <div className="space-y-8 pt-8 text-foreground">
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7 backdrop-blur supports-backdrop-filter:bg-card/60">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-amber-500/12 via-transparent to-emerald-500/8" />
-        <div className="relative space-y-6">
+        <div className="relative space-y-10">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="space-y-2">
               <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
@@ -151,7 +151,7 @@ export default function GoldRateTodayPage() {
         </div>
       </section>
       <section className="grid items-start gap-6">
-        <div className="space-y-6">
+        <div className="space-y-10">
           <div className="rounded-4xl border bg-card/70 p-6">
             <h3 className="font-semibold text-lg">Quick converter</h3>
             <p className="mt-2 text-muted-foreground text-sm">

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 type AdSlotVariant = "inline" | "sidebar" | "leaderboard";
 
 export function AdSlot({
-  label = "Advertisement",
+  label = "Ad",
   slot,
   variant = "inline",
   className,
