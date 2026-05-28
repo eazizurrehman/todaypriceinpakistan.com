@@ -14,7 +14,7 @@ export default function MethodologyPage() {
             Editorial
           </p>
           <h1 className="font-semibold text-4xl">Methodology</h1>
-          <p className="max-w-3xl text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm">
             This page explains how we gather and present rates to keep updates
             clean, transparent, and useful.
           </p>

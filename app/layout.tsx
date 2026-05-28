@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { AdSlot } from "@/app/_components/ad-slot";
+import { AppFooter } from "@/app/(modules)/_footer";
+import { AppHeader } from "@/app/(modules)/_header";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -61,7 +64,27 @@ export default function RootLayout({
       lang="en"
     >
       <body className="min-h-dvh">
-        <main>{children}</main>
+        <main>
+          <div className="container mx-auto pb-10">
+            <div className="mx-auto grid grid-cols-1 gap-8 px-4 lg:grid-cols-[14rem_minmax(0,1fr)_14rem]">
+              <aside className="hidden lg:block">
+                <div className="sticky top-6">
+                  <AdSlot slot="sidebar-left" variant="sidebar" />
+                </div>
+              </aside>
+              <div className=" ">
+                <AppHeader />
+                <div className=" ">{children}</div>
+                <AppFooter />
+              </div>
+              <aside className="hidden lg:block">
+                <div className="sticky top-6">
+                  <AdSlot slot="sidebar-right" variant="sidebar" />
+                </div>
+              </aside>
+            </div>
+          </div>
+        </main>
       </body>
     </html>
   );

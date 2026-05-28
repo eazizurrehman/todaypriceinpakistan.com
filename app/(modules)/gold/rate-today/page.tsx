@@ -79,7 +79,7 @@ export default function GoldRateTodayPage() {
                 Gold rate dashboard
               </p>
               <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
-                Gold rate today in Pakistan
+                Gold price
               </h1>
               <p className="text-muted-foreground text-sm">
                 Updated frequently • clean layout • no popup ads

@@ -14,13 +14,13 @@ export default function ContactPage() {
             Contact
           </p>
           <h1 className="font-semibold text-4xl">Get in touch</h1>
-          <p className="max-w-3xl text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm">
             If you notice a pricing issue, want to discuss partnerships, or have
             a general question, contact us using the details below.
           </p>
           <div className="flex flex-wrap gap-2 text-muted-foreground text-xs">
             <span className="rounded-full border border-border/70 px-3 py-1">
-              Response within 24–48 hours
+              Response within 24-48 hours
             </span>
             <span className="rounded-full border border-border/70 px-3 py-1">
               Friendly support
@@ -29,7 +29,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[1.1fr_1.1fr_0.8fr]">
+      <section className="grid grid-cols-2 gap-6">
         <div className="rounded-3xl border bg-card/70 p-6">
           <h2 className="font-medium text-lg">Email support</h2>
           <p className="mt-2 text-muted-foreground text-sm">

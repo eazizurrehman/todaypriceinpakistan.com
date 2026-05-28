@@ -14,7 +14,7 @@ export default function AboutPage() {
             About us
           </p>
           <h1 className="font-semibold text-4xl">About TodayPriceInPakistan</h1>
-          <p className="max-w-3xl text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm">
             TodayPriceInPakistan.com is a focused commodity price hub designed
             for users who want fast, clean, and practical updates without
             clutter. We publish key pricing information in a consistent
