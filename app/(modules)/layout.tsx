@@ -1,4 +1,5 @@
 import { AdSlot } from "@/app/(modules)/_components/ad-slot";
+import { AppFooter } from "@/app/(modules)/_footer";
 import { AppHeader } from "@/app/(modules)/_header";
 
 export default function RootLayout({
@@ -17,7 +18,10 @@ export default function RootLayout({
 
         <div className="min-w-0">
           <AppHeader />
-          <div className="container mx-auto">{children}</div>
+          <div className="container mx-auto">
+            {children}
+            <AppFooter />
+          </div>
         </div>
 
         <aside className="hidden lg:block">

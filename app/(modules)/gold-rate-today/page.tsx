@@ -2,9 +2,9 @@ import Image from "next/image";
 import { AdSlot } from "@/app/(modules)/_components/ad-slot";
 
 export const metadata = {
-  title: "Gold Rate Today in Pakistan - Live 24K, 22K Price",
+  title: "Gold Today Price in Pakistan - Live 24K, 22K Price",
   description:
-    "Live gold rate today in Pakistan with 24K, 22K, 21K, 18K prices, per tola and per gram, plus market summary and converter.",
+    "Live gold today price in Pakistan with 24K, 22K, 21K, 18K prices, per tola and per gram, plus market summary and converter.",
   alternates: {
     canonical: "https://todaypriceinpakistan.com/gold-rate-today",
   },
@@ -75,7 +75,7 @@ export default function GoldRateTodayPage() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="space-y-2">
               <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-                Gold dashboard
+                Gold rate dashboard
               </p>
               <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
                 Gold rate today in Pakistan
@@ -110,7 +110,7 @@ export default function GoldRateTodayPage() {
       <section className="grid items-start gap-6">
         <div className="rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-semibold text-xl">Gold rate by karat</h2>
+            <h2 className="font-semibold text-xl">Gold price by karat</h2>
             <div className="flex gap-2 text-xs">
               <span className="rounded-full border bg-background/25 px-3 py-1 text-muted-foreground">
                 PKR
@@ -232,7 +232,7 @@ export default function GoldRateTodayPage() {
           </p>
           <div className="mt-5 overflow-hidden rounded-3xl border bg-background/25">
             <Image
-              alt="Gold rate UI mockup preview"
+              alt="Gold price UI mockup preview"
               className="w-full object-cover"
               height={520}
               src={mockupImage}

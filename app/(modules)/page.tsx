@@ -3,7 +3,7 @@ import { AdSlot } from "@/app/(modules)/_components/ad-slot";
 
 const priceCategories = [
   {
-    title: "Gold Rate Today",
+    title: "Gold ",
     description:
       "Live 24K, 22K, 21K, and 18K prices in Pakistan across tola and gram.",
     href: "/gold-rate-today",
@@ -11,7 +11,7 @@ const priceCategories = [
     accent: "from-amber-400/25 via-amber-300/10 to-transparent",
   },
   {
-    title: "Silver Rate Today",
+    title: "Silver ",
     description:
       "Daily silver prices with tola, gram, and kilogram conversions.",
     href: "/silver-rate-today",
@@ -19,21 +19,21 @@ const priceCategories = [
     accent: "from-slate-300/20 via-slate-200/10 to-transparent",
   },
   {
-    title: "USD Rate Today",
+    title: "USD ",
     description: "PKR conversion rates for USD with market trend snapshots.",
     href: "/usd-rate-today",
     status: "Live",
     accent: "from-emerald-400/25 via-emerald-300/10 to-transparent",
   },
   {
-    title: "Petrol Rate Today",
+    title: "Petrol ",
     description: "Latest petrol and diesel prices with historical changes.",
     href: "/petrol-rate-today",
     status: "Live",
     accent: "from-rose-400/25 via-rose-300/10 to-transparent",
   },
   {
-    title: "Diesel Rate Today",
+    title: "Diesel ",
     description: "Latest diesel prices with city-wise changes.",
     href: "/diesel-rate-today",
     status: "Live",
@@ -113,7 +113,7 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 gap-5">
             {priceCategories.map((category) => {
               const isLive = category.status === "Live";
               return (
@@ -154,6 +154,7 @@ export default function Home() {
                 </div>
               );
             })}
+            <AdSlot slot="test  " variant="leaderboard" />
           </div>
         </div>
       </section>
