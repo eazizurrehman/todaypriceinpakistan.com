@@ -33,6 +33,7 @@ export default function RootLayout({
   return (
     <html
       className={cn(
+        "dark",
         "h-full",
         "antialiased",
         geistSans.variable,
@@ -43,7 +44,9 @@ export default function RootLayout({
       )}
       lang="en"
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="min-h-dvh">
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

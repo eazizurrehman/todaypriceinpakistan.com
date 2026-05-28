@@ -6,12 +6,18 @@ export const env = createEnv({
   server: {
     // App
     NODE_ENV: z.enum(["development", "production"]).default("development"),
-    GOLD_PRICEZ_API_KEY: z.url("DATABASE_URL is required"),
+
+    // GOLDPRICEZ
+    GOLDPRICEZ_GOLD_SILVER_API: z.url("GOLDPRICEZ_GOLD_SILVER_API is required"),
+    GOLDPRICEZ_API_KEY: z.string("GOLDPRICEZ_API_KEY is required"),
   },
   emptyStringAsUndefined: true,
   runtimeEnv: {
     // App
     NODE_ENV: process.env.NODE_ENV,
-    GOLD_PRICEZ_API_KEY: process.env.GOLD_PRICEZ_API_KEY,
+
+    // GOLDPRICEZ
+    GOLDPRICEZ_GOLD_SILVER_API: process.env.GOLDPRICEZ_GOLD_SILVER_API,
+    GOLDPRICEZ_API_KEY: process.env.GOLDPRICEZ_API_KEY,
   },
 });
