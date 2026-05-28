@@ -21,9 +21,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Home | Today Price in Pakistan",
+  metadataBase: new URL("https://todaypriceinpakistan.com"),
+  title: {
+    default: "Today Price in Pakistan",
+    template: "%s | Today Price in Pakistan",
+  },
   description:
-    "TodayPriceInPakistan.com provides fast, clean, and frequently updated commodity prices for Pakistan. Track gold, silver, USD, petrol, and diesel rates in one place.",
+    "Live gold, silver, dollar and petrol prices in Pakistan updated daily.",
+  openGraph: {
+    siteName: "Today Price in Pakistan",
+    locale: "en_PK",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Today Price in Pakistan",
+    description:
+      "Live gold, silver, dollar and petrol prices in Pakistan updated daily.",
+  },
 };
 
 export default function RootLayout({

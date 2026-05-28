@@ -1,8 +1,8 @@
-import { AdSlot } from "@/app/(modules)/_components/ad-slot";
+import { AdSlot } from "@/app/_components/ad-slot";
 import { AppFooter } from "@/app/(modules)/_footer";
 import { AppHeader } from "@/app/(modules)/_header";
 
-export default function RootLayout({
+export default function ModulesLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

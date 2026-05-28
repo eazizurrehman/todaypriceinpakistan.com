@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AdSlot } from "@/app/(modules)/_components/ad-slot";
+import { AdSlot } from "@/app/_components/ad-slot";
 
 const priceCategories = [
   {

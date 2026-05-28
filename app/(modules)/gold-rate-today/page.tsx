@@ -1,8 +1,9 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import { AdSlot } from "@/app/(modules)/_components/ad-slot";
+import { AdSlot } from "@/app/_components/ad-slot";
 
-export const metadata = {
-  title: "Gold | Today Price in Pakistan - Live 24K, 22K, 21K, 18K prices",
+export const metadata: Metadata = {
+  title: "Gold | Live 24K, 22K, 21K, 18K prices",
   description:
     "Live gold today price in Pakistan with 24K, 22K, 21K, 18K prices, per tola and per gram, plus market summary and converter.",
   alternates: {
