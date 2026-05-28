@@ -1,3 +1,4 @@
+import { AdSlot } from "@/app/(modules)/_components/ad-slot";
 import { AppHeader } from "@/app/(modules)/_header";
 
 export default function RootLayout({
@@ -6,20 +7,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex justify-center pb-5">
-      <div className="relative flex gap-10">
-        <aside className="w-40">
-          <div className="sticky top-5 left-0 h-[95.7dvh] w-full rounded-xl border bg-[#151a22] p-5">
-            Ad
+    <div className="pb-10">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 lg:grid-cols-[14rem_minmax(0,1fr)_14rem]">
+        <aside className="hidden lg:block">
+          <div className="sticky top-6">
+            <AdSlot slot="sidebar-left" variant="sidebar" />
           </div>
         </aside>
-        <div className="container mx-auto">
+
+        <div className="min-w-0">
           <AppHeader />
-          {children}
+          <div className="container mx-auto">{children}</div>
         </div>
-        <aside className="w-40">
-          <div className="sticky top-5 left-0 h-[95.7dvh] w-full rounded-xl border bg-[#151a22] p-5">
-            Ad
+
+        <aside className="hidden lg:block">
+          <div className="sticky top-6">
+            <AdSlot slot="sidebar-right" variant="sidebar" />
           </div>
         </aside>
       </div>
