@@ -1,5 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import { AdSlot } from "@/app/_components/ad-slot";
 
 export const metadata: Metadata = {
@@ -44,6 +45,28 @@ const highlights = [
   { label: "10 grams 24K", value: "Rs. 396,528", delta: "+0.22%" },
 ];
 
+const sidebarSections = [
+  {
+    title: "Per unit",
+    links: [
+      { label: "Per Tola", href: "/gold/per-tola" },
+      { label: "Per Gram", href: "/gold/per-gram" },
+      { label: "Per 10 Grams", href: "/gold/per-10-grams" },
+      { label: "Per Kilogram", href: "/gold/per-kilogram" },
+    ],
+  },
+  {
+    title: "City wise",
+    links: [
+      { label: "Karachi", href: "/gold/karachi" },
+      { label: "Lahore", href: "/gold/lahore" },
+      { label: "Islamabad", href: "/gold/islamabad" },
+      { label: "Peshawar", href: "/gold/peshawar" },
+      { label: "Quetta", href: "/gold/quetta" },
+    ],
+  },
+];
+
 function RatePill({
   label,
   value,
@@ -64,10 +87,37 @@ function RatePill({
   );
 }
 
-const mockupImage =
-  "data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='520' viewBox='0 0 1200 520'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='%23131a23'/><stop offset='1' stop-color='%231b2230'/></linearGradient></defs><rect width='1200' height='520' fill='url(%23g)'/><rect x='60' y='60' width='520' height='160' rx='24' fill='%231e2634' stroke='%23313945'/><rect x='640' y='60' width='500' height='340' rx='24' fill='%231e2634' stroke='%23313945'/><rect x='60' y='250' width='520' height='220' rx='24' fill='%231e2634' stroke='%23313945'/><rect x='90' y='90' width='200' height='16' rx='8' fill='%23f6d58a'/><rect x='90' y='120' width='260' height='12' rx='6' fill='%23c4c8cf'/><rect x='90' y='320' width='380' height='12' rx='6' fill='%23c4c8cf'/><rect x='90' y='350' width='300' height='12' rx='6' fill='%23c4c8cf'/><rect x='90' y='380' width='260' height='12' rx='6' fill='%23c4c8cf'/><rect x='680' y='100' width='420' height='18' rx='9' fill='%23f6d58a'/><rect x='680' y='140' width='360' height='12' rx='6' fill='%23c4c8cf'/><rect x='680' y='180' width='300' height='12' rx='6' fill='%23c4c8cf'/><rect x='680' y='220' width='280' height='12' rx='6' fill='%23c4c8cf'/><rect x='680' y='260' width='240' height='12' rx='6' fill='%23c4c8cf'/></svg>";
+function SideLinks() {
+  return (
+    <aside className="h-full w-60 rounded-2xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
+      <h3 className="font-semibold text-lg">Browse gold rates</h3>
+      <div className="mt-4 space-y-5">
+        {sidebarSections.map((section) => (
+          <div key={section.title}>
+            <p className="text-muted-foreground text-xs uppercase tracking-wide">
+              {section.title}
+            </p>
+            <ul className="mt-2 space-y-3">
+              {section.links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    className="flex items-center justify-between border bg-background/25 text-foreground text-sm transition hover:border-amber-300/50 hover:text-amber-200"
+                    href={link.href}
+                  >
+                    <span>{link.label}</span>
+                    <ArrowUpRight width={16} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </aside>
+  );
+}
 
-export default function GoldRateTodayPage() {
+function GoldRateTodayPageInner() {
   return (
     <div className="space-y-8 pt-8 text-foreground">
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7 backdrop-blur supports-backdrop-filter:bg-card/60">
@@ -108,8 +158,8 @@ export default function GoldRateTodayPage() {
 
       <AdSlot slot="gold-inline-top" variant="leaderboard" />
 
-      <section className="grid items-start gap-6">
-        <div className="rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
+      <section className="grid items-start gap-6 lg:gap-8">
+        <div className="min-w-0 rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="font-semibold text-xl">Gold price by karat</h2>
             <div className="flex gap-2 text-xs">
@@ -225,24 +275,28 @@ export default function GoldRateTodayPage() {
             <li>• Review USD-PKR movement to understand global impact.</li>
           </ul>
         </div>
-
         <div className="rounded-4xl border bg-card/70 p-6">
           <h3 className="font-semibold text-lg">Visual mockup</h3>
           <p className="mt-2 text-muted-foreground text-sm">
             Shareable preview for this modern gold dashboard style.
           </p>
-          <div className="mt-5 overflow-hidden rounded-3xl border bg-background/25">
-            <Image
-              alt="Gold price UI mockup preview"
-              className="w-full object-cover"
-              height={520}
-              src={mockupImage}
-              unoptimized
-              width={1200}
-            />
-          </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+export default function GoldRateTodayPage() {
+  return (
+    <div className="flex gap-6">
+      <div className="relative">
+        <div className="sticky top-28 left-0 h-[84dvh]">
+          <SideLinks />
+        </div>
+      </div>
+      <div className="">
+        <GoldRateTodayPageInner />
+      </div>
     </div>
   );
 }

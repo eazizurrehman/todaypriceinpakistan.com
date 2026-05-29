@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -20,14 +21,15 @@ export function AppHeader() {
   return (
     <div className="sticky top-0 z-100 rounded-b-2xl bg-background/85 pt-5 backdrop-blur supports-backdrop-filter:bg-background/60">
       <header className="relative mx-auto flex w-full items-center justify-between gap-4 rounded-3xl border bg-card/70 px-4 py-3 shadow-xs backdrop-blur supports-backdrop-filter:bg-card/60">
-        <div className="-z-10 absolute inset-0 rounded-3xl bg-linear-to-r from-amber-500/10 via-transparent to-emerald-500/10" />
-        <Link className="flex items-center gap-2" href="/">
-          <span className="font-semibold leading-tight">
-            TodayPriceInPakistan
-            <span className="hidden text-muted-foreground text-sm sm:inline">
-              .com
-            </span>
-          </span>
+        <div className="-z-10 absolute inset-0 flex items-center rounded-3xl bg-linear-to-r from-amber-500/10 via-transparent to-emerald-500/10" />
+        <Link className="flex items-center" href="/">
+          <Image
+            alt="TodayPriceInPakistan.com"
+            className="h-6 w-auto"
+            height={60}
+            src="/logo.svg"
+            width={610}
+          />
         </Link>
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="space-x-1">

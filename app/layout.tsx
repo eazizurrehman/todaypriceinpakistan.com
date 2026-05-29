@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { AppFooter } from "@/app/_components/_footer";
+import { AppHeader } from "@/app/_components/_header";
 import { AdSlot } from "@/app/_components/ad-slot";
-import { AppFooter } from "@/app/(modules)/_footer";
-import { AppHeader } from "@/app/(modules)/_header";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -64,26 +64,25 @@ export default function RootLayout({
       lang="en"
     >
       <body className="min-h-dvh">
-        <main>
-          <div className="container mx-auto pb-10">
-            <div className="mx-auto grid grid-cols-1 gap-8 px-4 lg:grid-cols-[14rem_minmax(0,1fr)_14rem]">
-              <aside className="hidden lg:block">
-                <div className="sticky top-6">
-                  <AdSlot slot="sidebar-left" variant="sidebar" />
-                </div>
-              </aside>
-              <div className=" ">
-                <AppHeader />
-                <div className=" ">{children}</div>
-                <AppFooter />
-              </div>
-              <aside className="hidden lg:block">
-                <div className="sticky top-6">
-                  <AdSlot slot="sidebar-right" variant="sidebar" />
-                </div>
-              </aside>
+        <main className="container mx-auto grid grid-cols-1 gap-8 px-4 lg:grid-cols-[14rem_minmax(0,1fr)_14rem]">
+          <aside className="hidden lg:block">
+            <div className="sticky top-6">
+              <AdSlot slot="sidebar-left" variant="sidebar" />
+            </div>
+          </aside>
+          <div>
+            <AppHeader />
+            {children}
+            <div className="space-y-10 pb-10">
+              <AppFooter />
+              <AdSlot slot="footer" variant="inline" />
             </div>
           </div>
+          <aside className="hidden lg:block">
+            <div className="sticky top-6">
+              <AdSlot slot="sidebar-right" variant="sidebar" />
+            </div>
+          </aside>
         </main>
       </body>
     </html>

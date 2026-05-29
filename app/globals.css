@@ -161,7 +161,7 @@
 
 @layer utilities {
   .container {
-    @apply max-w-[1400px];
+    @apply max-w-[1600px];
   }
   .bp {
     @apply dark:bg-blue-900 3xs:dark:bg-rose-900 2xs:dark:bg-orange-900 xs:dark:bg-amber-900 sm:dark:bg-lime-900 md:dark:bg-emerald-900 lg:dark:bg-teal-900 xl:dark:bg-cyan-900 2xl:dark:bg-sky-900;
