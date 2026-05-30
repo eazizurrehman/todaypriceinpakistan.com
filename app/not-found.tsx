@@ -1,5 +1,52 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/app/_shadcn/button";
+import { Skeleton } from "@/app/_shadcn/skeleton";
+
+function NotFoundMiniPage() {
+  return (
+    <div className="relative mx-auto w-full max-w-sm">
+      <div className="rounded-[28px] border border-border/50 bg-background/80 p-6 shadow-lg">
+        <div className="flex items-center justify-between text-muted-foreground text-xs">
+          <Link className="flex items-center" href="/">
+            <Image
+              alt="TodayPriceInPakistan.com"
+              className="h-4 w-auto"
+              height={60}
+              src="/logo.svg"
+              width={610}
+            />
+          </Link>
+          <span className="font-bold">404</span>
+        </div>
+        <div className="mt-6 space-y-4">
+          <div className="space-y-2">
+            <Skeleton className="h-2 w-28 rounded-full bg-muted" />
+            <Skeleton className="h-2 w-40 rounded-full bg-muted" />
+          </div>
+          <div className="rounded-2xl border border-border/60 bg-card/70 p-4">
+            <p className="font-semibold text-foreground text-sm">
+              Page not found
+            </p>
+            <p className="mt-2 text-muted-foreground text-xs">
+              We couldn&apos;t fetch the requested page.
+            </p>
+          </div>
+          <div className="space-y-2">
+            <div className="flex gap-2">
+              <Skeleton className="h-2 w-20 rounded-full bg-muted" />
+              <Skeleton className="h-2 w-10 rounded-full bg-muted" />
+            </div>
+            <div className="flex gap-2">
+              <Skeleton className="h-2 w-28 rounded-full bg-muted" />
+              <Skeleton className="h-2 w-10 rounded-full bg-muted" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function NotFound() {
   return (
@@ -18,7 +65,7 @@ export default function NotFound() {
             </h1>
             <p className="max-w-md text-muted-foreground text-sm sm:text-base">
               The page you requested doesn&apos;t exist or has been moved. Use
-              the quick links below to get back to today&apos;s latest prices.
+              these links to get back to today&apos;s latest prices.
             </p>
           </div>
           <Button asChild>
@@ -26,37 +73,7 @@ export default function NotFound() {
           </Button>
         </div>
 
-        <div className="relative mx-auto w-full max-w-sm">
-          <div className="-z-10 absolute inset-0 rounded-[32px] border border-border/50 bg-linear-to-br from-background/20 via-background/10 to-background/40" />
-          <div className="rounded-[28px] border border-border/50 bg-background/80 p-6 shadow-lg">
-            <div className="flex items-center justify-between text-muted-foreground text-xs">
-              <span>Today Price in Pakistan</span>
-              <span>404</span>
-            </div>
-            <div className="mt-6 space-y-4">
-              <div className="space-y-2">
-                <div className="h-2 w-28 rounded-full bg-muted" />
-                <div className="h-2 w-40 rounded-full bg-muted" />
-              </div>
-              <div className="rounded-2xl border border-border/60 bg-card/70 p-4">
-                <p className="font-semibold text-foreground text-sm">
-                  No data found
-                </p>
-                <p className="mt-2 text-muted-foreground text-xs">
-                  We couldn&apos;t fetch the page. Please try a fresh search
-                  from the homepage.
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/20" />
-                <div className="space-y-2">
-                  <div className="h-2 w-20 rounded-full bg-muted" />
-                  <div className="h-2 w-28 rounded-full bg-muted" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <NotFoundMiniPage />
       </div>
     </section>
   );

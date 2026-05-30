@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 export type SideLinksSection = {
@@ -13,7 +12,7 @@ type SideLinksProps = {
 
 export function SideLinks({ title = "Browse", sections }: SideLinksProps) {
   return (
-    <aside className="h-full w-60 rounded-2xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
+    <aside className="h-full w-40 rounded-2xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
       <h3 className="font-semibold text-lg">{title}</h3>
       <div className="mt-4 space-y-5">
         {sections.map((section) => (
@@ -29,7 +28,6 @@ export function SideLinks({ title = "Browse", sections }: SideLinksProps) {
                     href={link.href}
                   >
                     <span>{link.label}</span>
-                    <ArrowUpRight width={16} />
                   </Link>
                 </li>
               ))}

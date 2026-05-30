@@ -10,15 +10,16 @@ const nextConfig: NextConfig = {
       expire: 60 * 60 * 24,
     },
   },
-  redirects() {
-    return [
-      {
-        source: "/:slug((?!gold/rate-today|images/gold/).*gold.*)",
-        destination: "/gold/rate-today",
-        permanent: true,
-      },
-    ];
-  },
+  // TODO: handle redirects properly
+  // redirects() {
+  //   return [
+  //     {
+  //       source: "/:slug((?!gold/rate-today|images/gold/).*gold.*)",
+  //       destination: "/gold/rate-today",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 };
 
 export default nextConfig;

@@ -1,39 +1,28 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { AdSlot } from "@/app/_components/ad-slot";
-import { Pulse } from "@/app/_components/pulse";
-import { SideLinks } from "@/app/_components/side-links";
+import { HeroSection } from "@/app/_components/hero-section";
 import { DataTable } from "@/app/_components/table";
-import { Badge } from "@/app/_shadcn/badge";
 import {
   type GoldRateRow,
   goldColumns,
 } from "@/app/(modules)/gold/rate-today/columns";
 import { calculateGoldPrice } from "@/app/(modules)/gold/utils";
 import { formatPKR } from "@/lib";
-import { formatDateAndTime } from "@/lib/date";
 
 export const metadata: Metadata = {
-  title: "Gold | Live 24k, 22k, 21k, 18k, 14k, 12k, 10k prices",
+  title: "Gold | Live 24K, 22K, 21K, 18K, 14K, 12K, 10K prices",
   description:
-    "Live gold today price in Pakistan with 24k, 22k, 21k, 18k, 14k, 12k, 10k prices, per tola and per gram.",
+    "Live gold today price in Pakistan with 24K, 22K, 21K, 18K, 14K, 12K, 10K prices, per tola and per gram.",
   alternates: {
     canonical: "https://todaypriceinpakistan.com/gold/rate-today",
   },
 };
 
-const sidebarSections = [
-  {
-    title: "Per unit",
-    links: [{ label: "Per Tola", href: "/gold/per-tola" }],
-  },
-];
-
 export default async function GoldRateTodayPage() {
   const { basePricePerTolaPer24k, updatedAt } = await getGoldPricesPakistan();
 
-  const highlights = [
+  const goldMainPrices = [
     {
       label: "24K per tola",
       value: formatPKR(
@@ -101,102 +90,60 @@ export default async function GoldRateTodayPage() {
   // ];
 
   return (
-    <div className="flex gap-6">
-      <div className="relative">
-        <div className="sticky top-28 left-0 h-[84dvh]">
-          <SideLinks sections={sidebarSections} title="Browse gold rates" />
-        </div>
-      </div>
-      <div className="">
-        <div className="space-y-8 pt-8 text-foreground">
-          <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7 backdrop-blur supports-backdrop-filter:bg-card/60">
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-amber-500/12 via-transparent to-emerald-500/8" />
-            <div className="relative space-y-10">
-              <div className="flex flex-wrap items-end justify-between gap-4">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Pulse />
-                    <p className="text-[12px] text-emerald-300 uppercase">
-                      Live
-                    </p>
-                  </div>
+    <div className="">
+      <div className="space-y-8 pt-8 text-foreground">
+        <HeroSection
+          description="Live rates for 24K, 22K, 21K, 18K, 14K, 12K, 10K — in PKR"
+          image={{
+            url: "/images/gold/gold-bricks.png",
+            alt: "Gold bars",
+            width: 735,
+            height: 499,
+          }}
+          prices={goldMainPrices}
+          title="Gold price in Pakistan"
+          updatedAt={updatedAt}
+        />
 
-                  <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
-                    Gold price in Pakistan
-                  </h1>
-                  <p className="text-muted-foreground text-sm">
-                    Live rates for 24K, 22K, 21K and 18K — in PKR
-                  </p>
-                  <p className="text-muted-foreground text-xs">
-                    Last updated: {formatDateAndTime(updatedAt)}
-                  </p>
-                </div>
-                <div>
-                  <Image
-                    alt="Gold bars"
-                    className="w-40 rounded-2xl object-cover"
-                    height={499}
-                    src="/images/gold/gold-bricks.png"
-                    width={735}
-                  />
-                </div>
-              </div>
+        <AdSlot slot="gold-inline-top" variant="leaderboard" />
 
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {highlights.map((item) => (
-                  <div
-                    className="rounded-3xl border bg-background/25 p-4"
-                    key={item.label}
-                  >
-                    <Badge variant="outline">{item.label}</Badge>
-                    <p className="mt-2 font-semibold text-amber-200 text-lg">
-                      {item.value}
-                    </p>
-                  </div>
-                ))}
+        <section className="grid items-start gap-6 lg:gap-8">
+          <DataTable
+            columns={goldColumns}
+            data={makeData()}
+            title="Gold price by karat"
+          />
+        </section>
+        <section className="grid items-start gap-6">
+          <div className="space-y-10">
+            <div className="rounded-4xl border bg-card/70 p-6">
+              <h3 className="font-semibold text-lg">Quick converter</h3>
+              <p className="mt-2 text-muted-foreground text-sm">
+                Convert between tola, gram, and kilogram in PKR.
+              </p>
+              <div className="mt-4 space-y-3">
+                <input
+                  className="w-full rounded-3xl border bg-background/25 px-4 py-3 text-foreground text-sm outline-none"
+                  defaultValue={1}
+                  type="number"
+                />
+                <select className="w-full rounded-3xl border bg-background/25 px-4 py-3 text-foreground text-sm">
+                  <option>Per Tola (Pakistan)</option>
+                  <option>Per Gram</option>
+                  <option>Per 10 Grams</option>
+                  <option>Per Kilogram</option>
+                </select>
+                <div className="rounded-3xl border border-amber-300/30 bg-linear-to-br from-amber-500/12 via-background/30 to-transparent px-4 py-3 text-amber-200 text-sm">
+                  Estimated value: Rs. 495,660
+                </div>
               </div>
             </div>
-          </section>
 
-          <AdSlot slot="gold-inline-top" variant="leaderboard" />
+            <AdSlot slot="gold-sidebar-inline" />
+          </div>
+        </section>
 
-          <section className="grid items-start gap-6 lg:gap-8">
-            <DataTable
-              columns={goldColumns}
-              data={makeData()}
-              title="Gold price by karat"
-            />
-          </section>
-          <section className="grid items-start gap-6">
-            <div className="space-y-10">
-              <div className="rounded-4xl border bg-card/70 p-6">
-                <h3 className="font-semibold text-lg">Quick converter</h3>
-                <p className="mt-2 text-muted-foreground text-sm">
-                  Convert between tola, gram, and kilogram in PKR.
-                </p>
-                <div className="mt-4 space-y-3">
-                  <input
-                    className="w-full rounded-3xl border bg-background/25 px-4 py-3 text-foreground text-sm outline-none"
-                    defaultValue={1}
-                    type="number"
-                  />
-                  <select className="w-full rounded-3xl border bg-background/25 px-4 py-3 text-foreground text-sm">
-                    <option>Per Tola (Pakistan)</option>
-                    <option>Per Gram</option>
-                    <option>Per 10 Grams</option>
-                    <option>Per Kilogram</option>
-                  </select>
-                  <div className="rounded-3xl border border-amber-300/30 bg-linear-to-br from-amber-500/12 via-background/30 to-transparent px-4 py-3 text-amber-200 text-sm">
-                    Estimated value: Rs. 495,660
-                  </div>
-                </div>
-              </div>
-
-              <AdSlot slot="gold-sidebar-inline" />
-            </div>
-          </section>
-
-          {/* <section className="grid gap-6 lg:grid-cols-3">
+        {/* <section className="grid gap-6 lg:grid-cols-3">
             <div className="rounded-4xl border bg-card/70 p-6 lg:col-span-2">
               <h3 className="font-semibold text-lg">Trend (last 7 days)</h3>
               <p className="mt-2 text-muted-foreground text-sm">
@@ -226,30 +173,27 @@ export default async function GoldRateTodayPage() {
           </section> 
           <AdSlot slot="gold-inline-bottom" /> */}
 
-          <section className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-4xl border bg-card/70 p-6">
-              <h3 className="font-semibold text-lg">Gold buying guide</h3>
-              <ul className="mt-4 space-y-3 text-muted-foreground text-sm">
-                <li>
-                  • Compare both tola and gram rates before finalizing purchase.
-                </li>
-                <li>
-                  • 24K is purest; 22K is commonly used in jewelry making.
-                </li>
-                <li>
-                  • Check local making charges separately from daily gold rate.
-                </li>
-                <li>• Review USD-PKR movement to understand global impact.</li>
-              </ul>
-            </div>
-            <div className="rounded-4xl border bg-card/70 p-6">
-              <h3 className="font-semibold text-lg">Visual mockup</h3>
-              <p className="mt-2 text-muted-foreground text-sm">
-                Shareable preview for this modern gold dashboard style.
-              </p>
-            </div>
-          </section>
-        </div>
+        <section className="grid gap-6 lg:grid-cols-2">
+          <div className="rounded-4xl border bg-card/70 p-6">
+            <h3 className="font-semibold text-lg">Gold buying guide</h3>
+            <ul className="mt-4 space-y-3 text-muted-foreground text-sm">
+              <li>
+                • Compare both tola and gram rates before finalizing purchase.
+              </li>
+              <li>• 24K is purest; 22K is commonly used in jewelry making.</li>
+              <li>
+                • Check local making charges separately from daily gold rate.
+              </li>
+              <li>• Review USD-PKR movement to understand global impact.</li>
+            </ul>
+          </div>
+          <div className="rounded-4xl border bg-card/70 p-6">
+            <h3 className="font-semibold text-lg">Visual mockup</h3>
+            <p className="mt-2 text-muted-foreground text-sm">
+              Shareable preview for this modern gold dashboard style.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );
