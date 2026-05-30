@@ -7,13 +7,11 @@ export default function GoldLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 py-8">
       <div className="relative">
-        <div className="sticky top-28 left-0 h-[84dvh]">
-          <SideLinks sections={sidebarSections} title="Gold rates" />
-        </div>
+        <SideLinks sections={sidebarSections} title="Gold rates" />
       </div>
-      {children}
+      <div>{children}</div>
     </div>
   );
 }

@@ -91,7 +91,7 @@ export default async function GoldRateTodayPage() {
 
   return (
     <div className="">
-      <div className="space-y-8 pt-8 text-foreground">
+      <div className="space-y-8 text-foreground">
         <HeroSection
           description="Live rates for 24K, 22K, 21K, 18K, 14K, 12K, 10K — in PKR"
           image={{
