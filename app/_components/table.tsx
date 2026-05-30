@@ -34,7 +34,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="overflow-hidden rounded-2xl border bg-card/70">
-      <div className="flex justify-between border-b px-2 py-3">
+      <div className="flex justify-between border-b p-3">
         <h2 className="font-semibold text-xl">{title}</h2>
         <div className="flex gap-2 text-xs">{headerSlot}</div>
       </div>

@@ -11,6 +11,7 @@ export function HeroSection({
   updatedAt,
   image,
   prices,
+  pricesClassName,
 }: {
   title: string;
   description: string;
@@ -23,6 +24,7 @@ export function HeroSection({
     className?: string;
   };
   prices: TPrice[];
+  pricesClassName?: string;
 }) {
   return (
     <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7 backdrop-blur supports-backdrop-filter:bg-card/60">
@@ -32,7 +34,9 @@ export function HeroSection({
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Pulse />
-              <p className="text-[12px] text-emerald-300 uppercase">Live</p>
+              <p className="text-[12px] text-emerald-300 uppercase tracking-widest">
+                Live
+              </p>
             </div>
             <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
               {title}
@@ -53,7 +57,7 @@ export function HeroSection({
           </div>
         </div>
 
-        <PriceCards prices={prices} />
+        <PriceCards className={pricesClassName} prices={prices} />
       </div>
     </section>
   );

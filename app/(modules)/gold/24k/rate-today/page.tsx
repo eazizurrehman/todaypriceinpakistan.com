@@ -48,6 +48,7 @@ export default async function Gold24KRateTodayPage() {
           height: 499,
         }}
         prices={gold24kPrices}
+        pricesClassName="grid-cols-3"
         title="24K Gold price in Pakistan"
         updatedAt={updatedAt}
       />

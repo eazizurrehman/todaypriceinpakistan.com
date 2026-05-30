@@ -101,6 +101,7 @@ export default async function GoldRateTodayPage() {
             height: 499,
           }}
           prices={goldMainPrices}
+          pricesClassName="grid-cols-4"
           title="Gold price in Pakistan"
           updatedAt={updatedAt}
         />

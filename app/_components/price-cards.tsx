@@ -1,16 +1,24 @@
 import type { TPrice } from "@/app/_components/types";
-import { Badge } from "@/app/_shadcn/badge";
+import { cn } from "@/lib/utils";
 
-export function PriceCards({ prices }: { prices: TPrice[] }) {
+export function PriceCards({
+  prices,
+  className,
+}: {
+  prices: TPrice[];
+  className?: string;
+}) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className={cn("grid gap-4", className)}>
       {prices.map((item) => (
         <div
-          className="rounded-3xl border bg-background/25 p-4"
+          className="flex w-full flex-col rounded-3xl border bg-background/25 p-4"
           key={item.label}
         >
-          <Badge variant="outline">{item.label}</Badge>
-          <p className="mt-2 font-semibold text-amber-200 text-lg">
+          <h4 className="shrink-0 text-xs uppercase tracking-widest">
+            {item.label}
+          </h4>
+          <p className="mt-2 shrink-0 font-semibold text-amber-200 text-lg">
             {item.value}
           </p>
         </div>
