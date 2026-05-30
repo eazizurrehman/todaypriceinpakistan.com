@@ -1,92 +1,105 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { AdSlot } from "@/app/_components/ad-slot";
+import { Pulse } from "@/app/_components/pulse";
 import { SideLinks } from "@/app/_components/side-links";
+import { DataTable } from "@/app/_components/table";
+import { Badge } from "@/app/_shadcn/badge";
+import {
+  type GoldRateRow,
+  goldColumns,
+} from "@/app/(modules)/gold/rate-today/columns";
+import { calculateGoldPrice } from "@/app/(modules)/gold/utils";
+import { formatPKR } from "@/lib";
+import { formatDateAndTime } from "@/lib/date";
 
 export const metadata: Metadata = {
-  title: "Gold | Live 24K, 22K, 21K, 18K prices",
+  title: "Gold | Live 24k, 22k, 21k, 18k, 14k, 12k, 10k prices",
   description:
-    "Live gold today price in Pakistan with 24K, 22K, 21K, 18K prices, per tola and per gram, plus market summary and converter.",
+    "Live gold today price in Pakistan with 24k, 22k, 21k, 18k, 14k, 12k, 10k prices, per tola and per gram.",
   alternates: {
     canonical: "https://todaypriceinpakistan.com/gold/rate-today",
   },
 };
 
-const karatRatios = {
-  "24K": 1,
-  "22K": 0.9167,
-  "21K": 0.875,
-  "18K": 0.75,
-} as const;
-
-const baseUnits = [
-  { key: "tola", label: "Per Tola (Pakistan)", value: 495660.04 },
-  { key: "gram", label: "Per Gram", value: 39652.8 },
-  { key: "10g", label: "Per 10 Grams", value: 396528.04 },
-  { key: "kg", label: "Per Kilogram", value: 39715432.71 },
-  { key: "masha", label: "Per Masha", value: 38528.69 },
-  { key: "ratti", label: "Per Ratti", value: 7226.45 },
-  { key: "grain", label: "Per Grain", value: 2470.58 },
-  { key: "tael", label: "Tael (Hong Kong)", value: 1501223.02 },
-];
-
-const marketSummary = [
-  { label: "USD → PKR", value: "278.34" },
-  { label: "Gold Ounce (USD)", value: "$4,438.06" },
-  { label: "Today High", value: "$4,466.69" },
-  { label: "Today Low", value: "$4,438.06" },
-  { label: "Updated", value: "28 May 2026, 01:13 AM" },
-];
-
-const highlights = [
-  { label: "24K per tola", value: "Rs. 495,660", delta: "+0.24%" },
-  { label: "22K per tola", value: "Rs. 454,350", delta: "+0.21%" },
-  { label: "24K per gram", value: "Rs. 39,653", delta: "+0.19%" },
-  { label: "10 grams 24K", value: "Rs. 396,528", delta: "+0.22%" },
-];
-
 const sidebarSections = [
   {
     title: "Per unit",
-    links: [
-      { label: "Per Tola", href: "/gold/per-tola" },
-      { label: "Per Gram", href: "/gold/per-gram" },
-      { label: "Per 10 Grams", href: "/gold/per-10-grams" },
-      { label: "Per Kilogram", href: "/gold/per-kilogram" },
-    ],
-  },
-  {
-    title: "City wise",
-    links: [
-      { label: "Karachi", href: "/gold/rate-today/city/karachi" },
-      { label: "Lahore", href: "/gold/rate-today/city/lahore" },
-      { label: "Islamabad", href: "/gold/rate-today/city/islamabad" },
-      { label: "Peshawar", href: "/gold/rate-today/city/peshawar" },
-      { label: "Quetta", href: "/gold/rate-today/city/quetta" },
-    ],
+    links: [{ label: "Per Tola", href: "/gold/per-tola" }],
   },
 ];
 
-function RatePill({
-  label,
-  value,
-  delta,
-}: {
-  label: string;
-  value: string;
-  delta: string;
-}) {
-  return (
-    <div className="rounded-3xl border bg-background/25 p-4">
-      <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-        {label}
-      </p>
-      <p className="mt-2 font-semibold text-amber-200 text-lg">{value}</p>
-      <p className="mt-1 text-emerald-300 text-xs">{delta} today</p>
-    </div>
-  );
-}
+export default async function GoldRateTodayPage() {
+  const { basePricePerTolaPer24k, updatedAt } = await getGoldPricesPakistan();
 
-export default function GoldRateTodayPage() {
+  const highlights = [
+    {
+      label: "24K per tola",
+      value: formatPKR(
+        calculateGoldPrice(basePricePerTolaPer24k, "tola", "24k"),
+      ),
+    },
+    {
+      label: "22K per tola",
+      value: formatPKR(
+        calculateGoldPrice(basePricePerTolaPer24k, "tola", "22k"),
+      ),
+    },
+    {
+      label: "21K per tola",
+      value: formatPKR(
+        calculateGoldPrice(basePricePerTolaPer24k, "tola", "21k"),
+      ),
+    },
+    {
+      label: "18K per tola",
+      value: formatPKR(
+        calculateGoldPrice(basePricePerTolaPer24k, "tola", "18k"),
+      ),
+    },
+  ];
+
+  const makeData = (): GoldRateRow[] => {
+    const karats = ["24k", "22k", "21k", "18k", "14k", "12k", "10k"] as const;
+    const units = [
+      { label: "Per Tola", unit: "tola" },
+      { label: "Per Gram", unit: "gram" },
+      { label: "Per 10 Grams", unit: "10g" },
+      { label: "Per Ounce", unit: "ounce" },
+      { label: "Per Kilogram", unit: "kg" },
+    ] as const;
+
+    return units.map(({ label, unit }) => {
+      const row: GoldRateRow = {
+        unit: label,
+        "24k": "",
+        "22k": "",
+        "21k": "",
+        "18k": "",
+        "14k": "",
+        "12k": "",
+        "10k": "",
+      };
+
+      karats.forEach((karat) => {
+        row[karat] = formatPKR(
+          calculateGoldPrice(basePricePerTolaPer24k, unit, karat),
+        );
+      });
+
+      return row;
+    });
+  };
+
+  // const _marketSummary = [
+  //   { label: "USD → PKR", value: "278.34" },
+  //   { label: "Gold Ounce (USD)", value: "$4,438.06" },
+  //   { label: "Today High", value: "$4,466.69" },
+  //   { label: "Today Low", value: "$4,438.06" },
+  //   { label: "Updated", value: formatDateAndTime(updatedAt) },
+  // ];
+
   return (
     <div className="flex gap-6">
       <div className="relative">
@@ -101,32 +114,45 @@ export default function GoldRateTodayPage() {
             <div className="relative space-y-10">
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div className="space-y-2">
-                  <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-                    Gold rate dashboard
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <Pulse />
+                    <p className="text-[12px] text-emerald-300 uppercase">
+                      Live
+                    </p>
+                  </div>
+
                   <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
-                    Gold price
+                    Gold price in Pakistan
                   </h1>
                   <p className="text-muted-foreground text-sm">
-                    Updated frequently • clean layout • no popup ads
+                    Live rates for 24K, 22K, 21K and 18K — in PKR
+                  </p>
+                  <p className="text-muted-foreground text-xs">
+                    Last updated: {formatDateAndTime(updatedAt)}
                   </p>
                 </div>
-                <div className="rounded-3xl border border-amber-300/30 bg-background/25 px-5 py-4">
-                  <p className="text-muted-foreground text-xs">24K per tola</p>
-                  <p className="mt-1 font-semibold text-3xl text-amber-200">
-                    Rs. 495,660
-                  </p>
+                <div>
+                  <Image
+                    alt="Gold bars"
+                    className="w-40 rounded-2xl object-cover"
+                    height={499}
+                    src="/images/gold/gold-bricks.png"
+                    width={735}
+                  />
                 </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {highlights.map((item) => (
-                  <RatePill
-                    delta={item.delta}
+                  <div
+                    className="rounded-3xl border bg-background/25 p-4"
                     key={item.label}
-                    label={item.label}
-                    value={item.value}
-                  />
+                  >
+                    <Badge variant="outline">{item.label}</Badge>
+                    <p className="mt-2 font-semibold text-amber-200 text-lg">
+                      {item.value}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -135,51 +161,11 @@ export default function GoldRateTodayPage() {
           <AdSlot slot="gold-inline-top" variant="leaderboard" />
 
           <section className="grid items-start gap-6 lg:gap-8">
-            <div className="min-w-0 rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h2 className="font-semibold text-xl">Gold price by karat</h2>
-                <div className="flex gap-2 text-xs">
-                  <span className="rounded-full border bg-background/25 px-3 py-1 text-muted-foreground">
-                    PKR
-                  </span>
-                  <span className="rounded-full border bg-background/25 px-3 py-1 text-muted-foreground">
-                    Last update: today
-                  </span>
-                </div>
-              </div>
-              <div className="mt-6 overflow-x-auto">
-                <table className="w-full min-w-160 text-left text-sm">
-                  <thead className="text-[11px] text-muted-foreground uppercase tracking-wide">
-                    <tr>
-                      <th className="pr-6 pb-3">Unit</th>
-                      {Object.keys(karatRatios).map((karat) => (
-                        <th className="pr-6 pb-3" key={karat}>
-                          {karat}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="text-foreground/90">
-                    {baseUnits.map((unit) => (
-                      <tr className="border-border/70 border-t" key={unit.key}>
-                        <td className="py-4 pr-6 font-medium text-foreground">
-                          {unit.label}
-                        </td>
-                        {Object.values(karatRatios).map((ratio, index) => (
-                          <td
-                            className="py-4 pr-6"
-                            key={`${unit.key}-${index}`}
-                          >
-                            Rs.{" "}
-                            {Math.round(unit.value * ratio).toLocaleString()}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <DataTable
+              columns={goldColumns}
+              data={makeData()}
+              title="Gold price by karat"
+            />
           </section>
           <section className="grid items-start gap-6">
             <div className="space-y-10">
@@ -210,7 +196,7 @@ export default function GoldRateTodayPage() {
             </div>
           </section>
 
-          <section className="grid gap-6 lg:grid-cols-3">
+          {/* <section className="grid gap-6 lg:grid-cols-3">
             <div className="rounded-4xl border bg-card/70 p-6 lg:col-span-2">
               <h3 className="font-semibold text-lg">Trend (last 7 days)</h3>
               <p className="mt-2 text-muted-foreground text-sm">
@@ -237,9 +223,8 @@ export default function GoldRateTodayPage() {
                 ))}
               </div>
             </div>
-          </section>
-
-          <AdSlot slot="gold-inline-bottom" />
+          </section> 
+          <AdSlot slot="gold-inline-bottom" /> */}
 
           <section className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-4xl border bg-card/70 p-6">

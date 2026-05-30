@@ -39,7 +39,7 @@ export function AdSlot({
         </span>
       </div>
       <div className="grid place-items-center px-4 py-6 text-muted-foreground text-sm">
-        Your ad renders here.
+        Ad
       </div>
     </section>
   );

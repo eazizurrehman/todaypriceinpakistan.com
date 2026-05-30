@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { AppFooter } from "@/app/_components/_footer";
-import { AppHeader } from "@/app/_components/_header";
 import { AdSlot } from "@/app/_components/ad-slot";
+import { AppFooter } from "@/app/_components/footer";
+import { AppHeader } from "@/app/_components/header";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
