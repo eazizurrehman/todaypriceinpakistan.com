@@ -2,7 +2,7 @@ import type { TSection } from "@/types";
 
 export const sidebarSections: TSection[] = [
   {
-    title: "Per karat",
+    title: "Karats",
     links: [
       { label: "24K", href: "/gold/24k/rate-today" },
       { label: "22K", href: "/gold/22k/rate-today" },
@@ -14,9 +14,16 @@ export const sidebarSections: TSection[] = [
     ],
   },
   {
+    title: "Calculators",
+    links: [
+      { label: "Price Calculator", href: "/gold/calculators/price-calculator" },
+      { label: "Unit Converter", href: "/gold/calculators/unit-converter" },
+      { label: "Zakat Calculator", href: "/gold/calculators/zakat-calculator" },
+    ],
+  },
+  {
     title: "General",
     links: [
-      { label: "Calculators", href: "/gold/calculators" },
       { label: "Comparison", href: "/gold/comparison" },
       { label: "Sources", href: "/gold/sources" },
       { label: "Guide", href: "/gold/guide" },

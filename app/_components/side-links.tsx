@@ -13,7 +13,7 @@ type SideLinksProps = {
 
 export function SideLinks({ title = "Browse", sections }: SideLinksProps) {
   return (
-    <aside className="sticky top-28 left-0 h-full max-h-[84dvh] w-40 overflow-y-auto rounded-2xl border bg-card/70 py-6 backdrop-blur supports-backdrop-filter:bg-card/60">
+    <aside className="sticky top-28 left-0 h-full max-h-[84dvh] w-44 overflow-y-auto rounded-2xl border bg-card/70 py-6 backdrop-blur supports-backdrop-filter:bg-card/60">
       <h3 className="px-4 font-semibold text-lg">{title}</h3>
       <div className="mt-4 space-y-5">
         {sections.map((section) => (

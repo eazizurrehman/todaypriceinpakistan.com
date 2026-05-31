@@ -1,30 +1,26 @@
 import Image from "next/image";
-import { PriceCards } from "@/app/_components/price-cards";
 import { Pulse } from "@/app/_components/pulse";
 import { formatDateAndTime } from "@/lib/date";
 import { cn } from "@/lib/utils";
-import type { TPrice } from "@/types";
 
 export function HeroSection({
   title,
   description,
   updatedAt,
   image,
-  prices,
-  pricesClassName,
+  slot,
 }: {
   title: string;
   description: string;
   updatedAt: Date;
   image: {
-    url: string;
+    src: string;
     alt: string;
     width: number;
     height: number;
     className?: string;
   };
-  prices: TPrice[];
-  pricesClassName?: string;
+  slot: React.ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
@@ -51,13 +47,12 @@ export function HeroSection({
               alt={image.alt}
               className={cn("w-40 rounded-2xl object-cover", image.className)}
               height={image.height}
-              src={image.url}
+              src={image.src}
               width={image.width}
             />
           </div>
         </div>
-
-        <PriceCards className={pricesClassName} prices={prices} />
+        {slot}
       </div>
     </section>
   );

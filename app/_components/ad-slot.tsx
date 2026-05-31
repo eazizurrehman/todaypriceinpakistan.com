@@ -4,12 +4,10 @@ type AdSlotVariant = "inline" | "sidebar" | "leaderboard";
 
 export function AdSlot({
   label = "Ad",
-  slot,
   variant = "inline",
   className,
 }: {
   label?: string;
-  slot: string;
   variant?: AdSlotVariant;
   className?: string;
 }) {
@@ -28,14 +26,10 @@ export function AdSlot({
         sizeClasses,
         className,
       )}
-      data-ad-slot={slot}
     >
       <div className="flex items-center justify-between gap-3 border-border/70 border-b px-4 py-3">
         <span className="text-[11px] text-muted-foreground uppercase tracking-wide">
           {label}
-        </span>
-        <span className="rounded-full border border-border/70 bg-background/40 px-2 py-0.5 text-[11px] text-muted-foreground">
-          {slot}
         </span>
       </div>
       <div className="grid place-items-center px-4 py-6 text-muted-foreground text-sm">

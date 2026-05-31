@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { AdSlot } from "@/app/_components/ad-slot";
 import { HeroSection } from "@/app/_components/hero-section";
+import { PriceCards } from "@/app/_components/price-cards";
 import { DataTable } from "@/app/_components/table";
 import {
   type GoldRateRow,
@@ -95,18 +96,17 @@ export default async function GoldRateTodayPage() {
         <HeroSection
           description="Live rates for 24K, 22K, 21K, 18K, 14K, 12K, 10K — in PKR"
           image={{
-            url: "/images/gold/gold-bricks.png",
+            src: "/images/gold/gold-bricks.png",
             alt: "Gold bars",
             width: 735,
             height: 499,
           }}
-          prices={goldMainPrices}
-          pricesClassName="grid-cols-4"
+          slot={<PriceCards className="grid-cols-4" prices={goldMainPrices} />}
           title="Gold price in Pakistan"
           updatedAt={updatedAt}
         />
 
-        <AdSlot slot="gold-inline-top" variant="leaderboard" />
+        <AdSlot variant="leaderboard" />
 
         <section className="grid items-start gap-6 lg:gap-8">
           <DataTable
@@ -144,7 +144,7 @@ export default async function GoldRateTodayPage() {
               </div>
             </div>
           </section> 
-          <AdSlot slot="gold-inline-bottom" /> */}
+          <AdSlot  /> */}
 
         <section className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-4xl border bg-card/70 p-6">

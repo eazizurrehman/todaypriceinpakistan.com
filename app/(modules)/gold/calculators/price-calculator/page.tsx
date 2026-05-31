@@ -2,10 +2,8 @@ import Image from "next/image";
 import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { AdSlot } from "@/app/_components/ad-slot";
 import { GoldPriceCalculator } from "@/app/(modules)/gold/calculators/_gold-price-converter";
-import { GoldUnitCalculator } from "@/app/(modules)/gold/calculators/_gold-unit-converter";
-import { GoldZakatCalculator } from "@/app/(modules)/gold/calculators/_gold-zakat-converter";
 
-export default async function GoldCalculatorsPage() {
+export default async function GoldPriceCalculatorPage() {
   const { basePricePerTolaPer24k, updatedAt } = await getGoldPricesPakistan();
 
   return (
@@ -16,7 +14,7 @@ export default async function GoldCalculatorsPage() {
           <div className="flex justify-between gap-4">
             <div className="space-y-2">
               <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
-                Gold Calculators
+                Gold Price Calculator
               </h1>
               <p className="max-w-lg text-muted-foreground text-sm">
                 Convert gold weights between Tola, Gram, Ounce, and Kilogram —
@@ -35,24 +33,14 @@ export default async function GoldCalculatorsPage() {
           </div>
         </div>
       </section>
-      <section className="grid items-start gap-6">
-        <GoldUnitCalculator />
-      </section>
-      <AdSlot slot="gold-sidebar-inline" />
+      <AdSlot />
       <section className="grid items-start gap-6">
         <GoldPriceCalculator
           basePricePerTolaPer24k={basePricePerTolaPer24k}
           priceUpdatedAt={updatedAt}
         />
       </section>
-      <AdSlot slot="gold-sidebar-inline" />
-      <section className="grid items-start gap-6">
-        <GoldZakatCalculator
-          basePricePerTolaPer24k={basePricePerTolaPer24k}
-          priceUpdatedAt={updatedAt}
-        />
-      </section>
-      <AdSlot slot="gold-sidebar-inline" />
+      <AdSlot />
     </div>
   );
 }

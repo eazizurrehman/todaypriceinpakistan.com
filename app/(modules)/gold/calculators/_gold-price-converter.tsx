@@ -47,16 +47,14 @@ export function GoldPriceCalculator({
 
   return (
     <div className="rounded-4xl border bg-card/70 p-6 shadow-lg">
-      <h3 className="font-semibold text-xl md:text-2xl">
-        Gold Price Calculator
-      </h3>
-      <p className="mt-2 text-muted-foreground text-sm">
-        Calculate gold value by weight and karat in PKR.
-      </p>
-      <p className="text-muted-foreground text-xs">
-        Last updated: {formatDateAndTime(priceUpdatedAt)}
-      </p>
-
+      <div className="flex items-center justify-between gap-2">
+        <p className="mt-2 text-muted-foreground text-sm">
+          Calculate gold value by weight and karat in PKR.
+        </p>
+        <p className="text-muted-foreground text-xs">
+          Last updated: {formatDateAndTime(priceUpdatedAt)}
+        </p>
+      </div>
       <div className="mt-6 flex gap-4">
         <div className="flex-1">
           <Input

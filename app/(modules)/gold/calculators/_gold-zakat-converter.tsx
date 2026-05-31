@@ -48,9 +48,6 @@ export function GoldZakatCalculator({
 
   return (
     <div className="rounded-4xl border bg-card/70 p-6 shadow-lg">
-      <h3 className="font-semibold text-xl md:text-2xl">
-        Gold Zakat Calculator
-      </h3>
       <p className="mt-2 text-muted-foreground text-sm">
         Calculate your gold Zakat based on the nisab threshold (
         {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}).
@@ -118,17 +115,17 @@ export function GoldZakatCalculator({
       >
         {meetsNisab ? (
           <span>
-            ✓ Nisab met — your gold exceeds
+            ✓ Nisab met — your gold exceeds{" "}
             <strong>
-              {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}
+              {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}{" "}
             </strong>
             . Zakat is obligatory.
           </span>
         ) : (
           <span>
-            ✗ Nisab not met — you need at least
+            ✗ Nisab not met — you need at least{" "}
             <strong>
-              {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}
+              {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}{" "}
             </strong>
             for Zakat to be obligatory.
           </span>

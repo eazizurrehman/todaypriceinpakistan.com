@@ -9,7 +9,7 @@ export default function GoldLayout({
   return (
     <div className="flex gap-6 py-8">
       <div className="relative">
-        <SideLinks sections={sidebarSections} title="Gold rates" />
+        <SideLinks sections={sidebarSections} title="Gold" />
       </div>
       <div className="w-full">{children}</div>
     </div>

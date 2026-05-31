@@ -154,7 +154,7 @@ export default function Home() {
                 </div>
               );
             })}
-            <AdSlot slot="test  " variant="leaderboard" />
+            <AdSlot variant="leaderboard" />
           </div>
         </div>
       </section>
@@ -186,7 +186,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <AdSlot slot="home-inline-2" />
+          <AdSlot />
         </div>
       </section>
 
