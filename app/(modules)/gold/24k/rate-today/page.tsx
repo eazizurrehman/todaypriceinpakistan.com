@@ -1,7 +1,7 @@
 import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { HeroSection } from "@/app/_components/hero-section";
-import { calculateGoldPrice } from "@/app/(modules)/gold/utils";
 import { formatPKR } from "@/lib";
+import { calculateGoldPrice } from "@/lib/calculators";
 
 export default async function Gold24KRateTodayPage() {
   const { basePricePerTolaPer24k, updatedAt } = await getGoldPricesPakistan();

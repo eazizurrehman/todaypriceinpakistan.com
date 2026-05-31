@@ -1,8 +1,12 @@
 import Image from "next/image";
+import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { AdSlot } from "@/app/_components/ad-slot";
-import { GoldCalculator } from "@/app/(modules)/gold/calculators/_gold-unit-converter";
+import { GoldPriceCalculator } from "@/app/(modules)/gold/calculators/_gold-price-converter";
+import { GoldUnitCalculator } from "@/app/(modules)/gold/calculators/_gold-unit-converter";
 
-export default function GoldCalculatorsPage() {
+export default async function GoldCalculatorsPage() {
+  const { basePricePerTolaPer24k, updatedAt } = await getGoldPricesPakistan();
+
   return (
     <div className="space-y-10">
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
@@ -31,7 +35,14 @@ export default function GoldCalculatorsPage() {
         </div>
       </section>
       <section className="grid items-start gap-6">
-        <GoldCalculator />
+        <GoldUnitCalculator />
+      </section>
+      <AdSlot slot="gold-sidebar-inline" />
+      <section className="grid items-start gap-6">
+        <GoldPriceCalculator
+          basePricePerTolaPer24k={basePricePerTolaPer24k}
+          priceUpdatedAt={updatedAt}
+        />
       </section>
       <AdSlot slot="gold-sidebar-inline" />
     </div>

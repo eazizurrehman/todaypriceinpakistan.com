@@ -7,8 +7,8 @@ import {
   type GoldRateRow,
   goldColumns,
 } from "@/app/(modules)/gold/rate-today/columns";
-import { calculateGoldPrice } from "@/app/(modules)/gold/utils";
 import { formatPKR } from "@/lib";
+import { calculateGoldPrice } from "@/lib/calculators";
 
 export const metadata: Metadata = {
   title: "Gold | Live 24K, 22K, 21K, 18K, 14K, 12K, 10K prices",

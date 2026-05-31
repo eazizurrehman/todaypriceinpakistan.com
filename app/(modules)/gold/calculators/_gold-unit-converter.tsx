@@ -11,43 +11,21 @@ import {
   ComboboxList,
 } from "@/app/_shadcn/combobox";
 import { Input } from "@/app/_shadcn/input";
+import {
+  convertUnits,
+  formatNumber,
+  sanitize,
+  type TUnit,
+  UNITS,
+} from "@/lib/calculators";
 
-type Unit = "Tola" | "Gram" | "Ounce" | "Kilogram";
-
-const UNITS: Unit[] = ["Tola", "Gram", "Ounce", "Kilogram"];
-
-const TO_GRAMS: Record<Unit, number> = {
-  Tola: 11.6638,
-  Gram: 1,
-  Ounce: 31.1035,
-  Kilogram: 1000,
-};
-
-function convertUnits(value: number, from: Unit, to: Unit): number {
-  const grams = value * TO_GRAMS[from];
-  return grams / TO_GRAMS[to];
-}
-
-function formatNumber(num: number): string {
-  if (Number.isNaN(num) || !Number.isFinite(num)) return "";
-  return parseFloat(num.toPrecision(6)).toString();
-}
-
-function sanitize(val: string): string {
-  const parsed = parseFloat(val);
-
-  if (Number.isNaN(parsed) || parsed <= 0) return "";
-
-  return val;
-}
-
-export function GoldCalculator() {
-  const [topValue, setTopValue] = useState<string>("10");
-  const [topUnit, setTopUnit] = useState<Unit>("Tola");
+export function GoldUnitCalculator() {
+  const [topValue, setTopValue] = useState<string>("1");
+  const [topUnit, setTopUnit] = useState<TUnit>("Tola");
   const [bottomValue, setBottomValue] = useState<string>(
-    formatNumber(convertUnits(10, "Tola", "Gram")),
+    formatNumber(convertUnits(1, "Tola", "Gram")),
   );
-  const [bottomUnit, setBottomUnit] = useState<Unit>("Gram");
+  const [bottomUnit, setBottomUnit] = useState<TUnit>("Gram");
 
   const handleTopValueChange = (val: string) => {
     const clean = sanitize(val);
@@ -58,7 +36,7 @@ export function GoldCalculator() {
     else setBottomValue("");
   };
 
-  const handleTopUnitChange = (unit: Unit) => {
+  const handleTopUnitChange = (unit: TUnit) => {
     setTopUnit(unit);
     const parsed = parseFloat(topValue);
     if (!Number.isNaN(parsed))
@@ -74,7 +52,7 @@ export function GoldCalculator() {
     else setTopValue("");
   };
 
-  const handleBottomUnitChange = (unit: Unit) => {
+  const handleBottomUnitChange = (unit: TUnit) => {
     setBottomUnit(unit);
     const parsed = parseFloat(topValue);
     if (!Number.isNaN(parsed))
@@ -96,12 +74,13 @@ export function GoldCalculator() {
           Convert between Tola, Gram, Ounce, and Kilogram in PKR.
         </p>
         <div className="mt-6 grid grid-cols-1 gap-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <div className="flex-1">
               <Input
-                className="font-semibold text-lg"
+                className="font-semibold text-lg placeholder:font-normal"
                 min={0}
                 onChange={(e) => handleTopValueChange(e.target.value)}
+                placeholder="Enter quantity..."
                 type="number"
                 value={topValue}
               />
@@ -109,7 +88,7 @@ export function GoldCalculator() {
             <div className="flex-1">
               <Combobox
                 items={UNITS}
-                onValueChange={(val) => handleTopUnitChange(val as Unit)}
+                onValueChange={(val) => handleTopUnitChange(val as TUnit)}
                 value={topUnit}
               >
                 <ComboboxInput className="text-base" placeholder="Select" />
@@ -135,12 +114,13 @@ export function GoldCalculator() {
               <ArrowUpDown className="w-5 text-amber-400" />
             </Button>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <div className="flex-1">
               <Input
-                className="font-semibold text-lg"
+                className="font-semibold text-lg placeholder:font-normal"
                 min={0}
                 onChange={(e) => handleBottomValueChange(e.target.value)}
+                placeholder="Enter quantity..."
                 type="number"
                 value={bottomValue}
               />
@@ -148,7 +128,7 @@ export function GoldCalculator() {
             <div className="flex-1">
               <Combobox
                 items={UNITS}
-                onValueChange={(val) => handleBottomUnitChange(val as Unit)}
+                onValueChange={(val) => handleBottomUnitChange(val as TUnit)}
                 value={bottomUnit}
               >
                 <ComboboxInput className="text-base" placeholder="Select" />

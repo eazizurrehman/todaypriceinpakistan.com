@@ -1,4 +1,4 @@
-import type { TSection } from "@/app/_components/types";
+import type { TSection } from "@/types";
 
 export const sidebarSections: TSection[] = [
   {

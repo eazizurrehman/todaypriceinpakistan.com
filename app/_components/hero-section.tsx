@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { PriceCards } from "@/app/_components/price-cards";
 import { Pulse } from "@/app/_components/pulse";
-import type { TPrice } from "@/app/_components/types";
 import { formatDateAndTime } from "@/lib/date";
 import { cn } from "@/lib/utils";
+import type { TPrice } from "@/types";
 
 export function HeroSection({
   title,
