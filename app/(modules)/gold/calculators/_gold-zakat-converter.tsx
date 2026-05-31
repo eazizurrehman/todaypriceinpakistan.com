@@ -21,7 +21,10 @@ import {
 } from "@/lib/calculators";
 import { formatDateAndTime } from "@/lib/date";
 
-export function GoldPriceCalculator({
+const GOLD_NISAB_GRAMS = 87.4785;
+const ZAKAT_RATE = 0.025;
+
+export function GoldZakatCalculator({
   basePricePerTolaPer24k,
   priceUpdatedAt,
 }: {
@@ -32,26 +35,25 @@ export function GoldPriceCalculator({
   const [unit, setUnit] = useState<TUnit>("Tola");
   const [karat, setKarat] = useState<TKarat>("24K");
 
-  const handleQuantityChange = (val: string) => {
-    setQuantity(sanitize(val));
-  };
-
   const pricePerGram24k = basePricePerTolaPer24k / TO_GRAMS.Tola;
 
-  const totalPrice = (() => {
-    const parsed = parseFloat(quantity);
-    if (Number.isNaN(parsed)) return null;
-    const grams = parsed * TO_GRAMS[unit];
-    return grams * pricePerGram24k * KARAT_PURITY[karat];
-  })();
+  const parsed = parseFloat(sanitize(quantity) || "0");
+  const totalGrams = parsed * TO_GRAMS[unit];
+  const pureGoldGrams = totalGrams * KARAT_PURITY[karat];
+
+  const nisabValuePKR = GOLD_NISAB_GRAMS * pricePerGram24k;
+  const totalValuePKR = pureGoldGrams * pricePerGram24k;
+  const meetsNisab = pureGoldGrams >= GOLD_NISAB_GRAMS;
+  const zakatDue = meetsNisab ? totalValuePKR * ZAKAT_RATE : 0;
 
   return (
     <div className="rounded-4xl border bg-card/70 p-6 shadow-lg">
       <h3 className="font-semibold text-xl md:text-2xl">
-        Gold Price Calculator
+        Gold Zakat Calculator
       </h3>
       <p className="mt-2 text-muted-foreground text-sm">
-        Calculate gold value by weight and karat in PKR.
+        Calculate your gold Zakat based on the nisab threshold (
+        {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}).
       </p>
       <p className="text-muted-foreground text-xs">
         Last updated: {formatDateAndTime(priceUpdatedAt)}
@@ -62,7 +64,7 @@ export function GoldPriceCalculator({
           <Input
             className="font-semibold text-lg placeholder:font-normal"
             min={0}
-            onChange={(e) => handleQuantityChange(e.target.value)}
+            onChange={(e) => setQuantity(sanitize(e.target.value))}
             placeholder="Enter quantity..."
             type="number"
             value={quantity}
@@ -107,13 +109,49 @@ export function GoldPriceCalculator({
         </div>
       </div>
 
-      <div className="mt-6 rounded-3xl border border-amber-300/30 bg-linear-to-br from-amber-500/10 via-background/40 to-transparent px-6 py-4 text-center shadow-inner">
-        <p className="text-muted-foreground text-xs uppercase tracking-widest">
-          Total Value
-        </p>
-        <p className="mt-1 font-bold text-2xl text-amber-200 tracking-wide">
-          {totalPrice !== null ? formatPKR(totalPrice) : "—"}
-        </p>
+      <div
+        className={`mt-6 rounded-2xl border px-4 py-3 text-sm ${
+          meetsNisab
+            ? "border-emerald-400/30 bg-emerald-500/10 text-emerald-300"
+            : "border-muted/30 bg-muted/20 text-muted-foreground"
+        }`}
+      >
+        {meetsNisab ? (
+          <span>
+            ✓ Nisab met — your gold exceeds
+            <strong>
+              {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}
+            </strong>
+            . Zakat is obligatory.
+          </span>
+        ) : (
+          <span>
+            ✗ Nisab not met — you need at least
+            <strong>
+              {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}
+            </strong>
+            for Zakat to be obligatory.
+          </span>
+        )}
+      </div>
+
+      <div className="mt-4 grid grid-cols-2 gap-4">
+        <div className="rounded-3xl border border-muted/30 bg-muted/20 px-5 py-4 text-center">
+          <p className="text-muted-foreground text-xs uppercase tracking-widest">
+            Gold Value
+          </p>
+          <p className="mt-1 font-bold text-lg tracking-wide">
+            {totalValuePKR > 0 ? formatPKR(totalValuePKR) : "—"}
+          </p>
+        </div>
+        <div className="rounded-3xl border border-amber-300/30 bg-linear-to-br from-amber-500/10 via-background/40 to-transparent px-5 py-4 text-center shadow-inner">
+          <p className="text-muted-foreground text-xs uppercase tracking-widest">
+            Zakat Due (2.5%)
+          </p>
+          <p className="mt-1 font-bold text-2xl text-amber-200 tracking-wide">
+            {meetsNisab && zakatDue > 0 ? formatPKR(zakatDue) : "—"}
+          </p>
+        </div>
       </div>
     </div>
   );

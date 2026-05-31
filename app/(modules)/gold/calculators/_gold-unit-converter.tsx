@@ -69,7 +69,10 @@ export function GoldUnitCalculator() {
   return (
     <div className="space-y-10">
       <div className="rounded-4xl border bg-card/70 p-6 shadow-lg">
-        <h3 className="font-semibold text-xl md:text-2xl">Unit Converter</h3>
+        <h3 className="font-semibold text-xl md:text-2xl">
+          {" "}
+          Gold Unit Converter
+        </h3>
         <p className="mt-2 text-muted-foreground text-sm">
           Convert between Tola, Gram, Ounce, and Kilogram in PKR.
         </p>

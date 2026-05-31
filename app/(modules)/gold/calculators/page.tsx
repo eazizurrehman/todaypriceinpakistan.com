@@ -3,6 +3,7 @@ import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { AdSlot } from "@/app/_components/ad-slot";
 import { GoldPriceCalculator } from "@/app/(modules)/gold/calculators/_gold-price-converter";
 import { GoldUnitCalculator } from "@/app/(modules)/gold/calculators/_gold-unit-converter";
+import { GoldZakatCalculator } from "@/app/(modules)/gold/calculators/_gold-zakat-converter";
 
 export default async function GoldCalculatorsPage() {
   const { basePricePerTolaPer24k, updatedAt } = await getGoldPricesPakistan();
@@ -40,6 +41,13 @@ export default async function GoldCalculatorsPage() {
       <AdSlot slot="gold-sidebar-inline" />
       <section className="grid items-start gap-6">
         <GoldPriceCalculator
+          basePricePerTolaPer24k={basePricePerTolaPer24k}
+          priceUpdatedAt={updatedAt}
+        />
+      </section>
+      <AdSlot slot="gold-sidebar-inline" />
+      <section className="grid items-start gap-6">
+        <GoldZakatCalculator
           basePricePerTolaPer24k={basePricePerTolaPer24k}
           priceUpdatedAt={updatedAt}
         />
