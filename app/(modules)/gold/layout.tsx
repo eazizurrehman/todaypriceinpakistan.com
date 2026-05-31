@@ -11,7 +11,7 @@ export default function GoldLayout({
       <div className="relative">
         <SideLinks sections={sidebarSections} title="Gold rates" />
       </div>
-      <div>{children}</div>
+      <div className="w-full">{children}</div>
     </div>
   );
 }

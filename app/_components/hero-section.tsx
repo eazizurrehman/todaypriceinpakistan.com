@@ -27,7 +27,7 @@ export function HeroSection({
   pricesClassName?: string;
 }) {
   return (
-    <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7 backdrop-blur supports-backdrop-filter:bg-card/60">
+    <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60">
       <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-amber-500/12 via-transparent to-emerald-500/8" />
       <div className="relative space-y-10">
         <div className="flex flex-wrap items-end justify-between gap-4">

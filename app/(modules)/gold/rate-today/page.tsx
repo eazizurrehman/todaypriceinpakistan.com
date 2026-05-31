@@ -115,34 +115,6 @@ export default async function GoldRateTodayPage() {
             title="Gold price by karat"
           />
         </section>
-        <section className="grid items-start gap-6">
-          <div className="space-y-10">
-            <div className="rounded-4xl border bg-card/70 p-6">
-              <h3 className="font-semibold text-lg">Quick converter</h3>
-              <p className="mt-2 text-muted-foreground text-sm">
-                Convert between tola, gram, and kilogram in PKR.
-              </p>
-              <div className="mt-4 space-y-3">
-                <input
-                  className="w-full rounded-3xl border bg-background/25 px-4 py-3 text-foreground text-sm outline-none"
-                  defaultValue={1}
-                  type="number"
-                />
-                <select className="w-full rounded-3xl border bg-background/25 px-4 py-3 text-foreground text-sm">
-                  <option>Per Tola (Pakistan)</option>
-                  <option>Per Gram</option>
-                  <option>Per 10 Grams</option>
-                  <option>Per Kilogram</option>
-                </select>
-                <div className="rounded-3xl border border-amber-300/30 bg-linear-to-br from-amber-500/12 via-background/30 to-transparent px-4 py-3 text-amber-200 text-sm">
-                  Estimated value: Rs. 495,660
-                </div>
-              </div>
-            </div>
-
-            <AdSlot slot="gold-sidebar-inline" />
-          </div>
-        </section>
 
         {/* <section className="grid gap-6 lg:grid-cols-3">
             <div className="rounded-4xl border bg-card/70 p-6 lg:col-span-2">

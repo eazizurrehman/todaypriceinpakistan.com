@@ -1,4 +1,6 @@
-export const sidebarSections = [
+import type { TSection } from "@/app/_components/types";
+
+export const sidebarSections: TSection[] = [
   {
     title: "Per karat",
     links: [
@@ -9,6 +11,16 @@ export const sidebarSections = [
       { label: "14K", href: "/gold/14k/rate-today" },
       { label: "12K", href: "/gold/12k/rate-today" },
       { label: "10K", href: "/gold/10k/rate-today" },
+    ],
+  },
+  {
+    title: "General",
+    links: [
+      { label: "Calculators", href: "/gold/calculators" },
+      { label: "Comparison", href: "/gold/comparison" },
+      { label: "Sources", href: "/gold/sources" },
+      { label: "Guide", href: "/gold/guide" },
+      { label: "Disclaimer", href: "/gold/disclaimer" },
     ],
   },
 ];
