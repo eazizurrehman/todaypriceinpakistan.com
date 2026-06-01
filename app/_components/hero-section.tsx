@@ -1,6 +1,6 @@
 import Image from "next/image";
+import { AppLastUpdated } from "@/app/_components/last-updated";
 import { Pulse } from "@/app/_components/pulse";
-import { formatDateAndTime } from "@/lib/date";
 import { cn } from "@/lib/utils";
 
 export function HeroSection({
@@ -38,9 +38,7 @@ export function HeroSection({
               {title}
             </h1>
             <p className="text-muted-foreground text-sm">{description}</p>
-            <p className="text-muted-foreground text-xs">
-              Last updated: {formatDateAndTime(updatedAt)}
-            </p>
+            <AppLastUpdated dateAndTime={updatedAt} />
           </div>
           <div>
             <Image

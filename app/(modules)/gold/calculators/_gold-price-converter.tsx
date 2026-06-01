@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AppLastUpdated } from "@/app/_components/last-updated";
 import {
   Combobox,
   ComboboxContent,
@@ -19,7 +20,6 @@ import {
   type TUnit,
   UNITS,
 } from "@/lib/calculators";
-import { formatDateAndTime } from "@/lib/date";
 
 export function GoldPriceCalculator({
   basePricePerTolaPer24k,
@@ -47,14 +47,11 @@ export function GoldPriceCalculator({
 
   return (
     <div className="rounded-4xl border bg-card/70 p-6 shadow-lg">
-      <div className="flex items-center justify-between gap-2">
-        <p className="mt-2 text-muted-foreground text-sm">
-          Calculate gold value by weight and karat in PKR.
-        </p>
-        <p className="text-muted-foreground text-xs">
-          Last updated: {formatDateAndTime(priceUpdatedAt)}
-        </p>
-      </div>
+      <p className="mt-2 text-muted-foreground text-sm">
+        Calculate gold value by weight and karat in PKR.
+      </p>
+      <AppLastUpdated dateAndTime={priceUpdatedAt} />
+
       <div className="mt-6 flex gap-4">
         <div className="flex-1">
           <Input

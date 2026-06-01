@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AppLastUpdated } from "@/app/_components/last-updated";
 import {
   Combobox,
   ComboboxContent,
@@ -19,7 +20,6 @@ import {
   type TUnit,
   UNITS,
 } from "@/lib/calculators";
-import { formatDateAndTime } from "@/lib/date";
 
 const GOLD_NISAB_GRAMS = 87.4785;
 const ZAKAT_RATE = 0.025;
@@ -52,9 +52,7 @@ export function GoldZakatCalculator({
         Calculate your gold Zakat based on the nisab threshold (
         {GOLD_NISAB_GRAMS}g of 24k gold - {formatPKR(nisabValuePKR)}).
       </p>
-      <p className="text-muted-foreground text-xs">
-        Last updated: {formatDateAndTime(priceUpdatedAt)}
-      </p>
+      <AppLastUpdated dateAndTime={priceUpdatedAt} />
 
       <div className="mt-6 flex gap-4">
         <div className="flex-1">

@@ -1,3 +1,5 @@
+import { AppLastUpdated } from "@/app/_components/last-updated";
+
 export const metadata = {
   title: "Privacy Policy - TodayPriceInPakistan.com",
   description:
@@ -14,17 +16,7 @@ export default function PrivacyPolicyPage() {
             Legal
           </p>
           <h1 className="font-semibold text-4xl">Privacy Policy</h1>
-          <p className="text-muted-foreground text-sm">
-            Last updated: 28 May 2026
-          </p>
-          <div className="flex flex-wrap gap-2 text-muted-foreground text-xs">
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Minimal data collection
-            </span>
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Privacy-first analytics
-            </span>
-          </div>
+          <AppLastUpdated dateAndTime={new Date("June 1, 2026")} />
         </div>
       </section>
 

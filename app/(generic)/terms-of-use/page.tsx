@@ -1,3 +1,5 @@
+import { AppLastUpdated } from "@/app/_components/last-updated";
+
 export const metadata = {
   title: "Terms of Use - TodayPriceInPakistan.com",
   description: "Terms of Use for accessing and using TodayPriceInPakistan.com.",
@@ -13,17 +15,7 @@ export default function TermsOfUsePage() {
             Legal
           </p>
           <h1 className="font-semibold text-4xl">Terms of Use</h1>
-          <p className="text-muted-foreground text-sm">
-            Last updated: 28 May 2026
-          </p>
-          <div className="flex flex-wrap gap-2 text-muted-foreground text-xs">
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Informational content
-            </span>
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Responsible use
-            </span>
-          </div>
+          <AppLastUpdated dateAndTime={new Date("June 1, 2026")} />
         </div>
       </section>
 

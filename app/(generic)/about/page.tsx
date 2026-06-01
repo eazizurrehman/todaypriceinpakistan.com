@@ -11,23 +11,15 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-amber-200/10 via-transparent to-transparent" />
         <div className="relative space-y-3">
           <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-            About us
+            Company
           </p>
-          <h1 className="font-semibold text-4xl">About TodayPriceInPakistan</h1>
+          <h1 className="font-semibold text-4xl">About Us</h1>
           <p className="text-muted-foreground text-sm">
             TodayPriceInPakistan.com is a focused commodity price hub designed
             for users who want fast, clean, and practical updates without
             clutter. We publish key pricing information in a consistent
             dashboard format that is easy to browse on mobile and desktop.
           </p>
-          <div className="flex flex-wrap gap-2 text-muted-foreground text-xs">
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Mobile-first
-            </span>
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Clean data presentation
-            </span>
-          </div>
         </div>
       </section>
 

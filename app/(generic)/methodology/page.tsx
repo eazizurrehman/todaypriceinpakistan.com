@@ -18,14 +18,6 @@ export default function MethodologyPage() {
             This page explains how we gather and present rates to keep updates
             clean, transparent, and useful.
           </p>
-          <div className="flex flex-wrap gap-2 text-muted-foreground text-xs">
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Clear sources
-            </span>
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Consistent units
-            </span>
-          </div>
         </div>
       </section>
 
