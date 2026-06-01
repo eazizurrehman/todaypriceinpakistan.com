@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,7 +24,7 @@ const legalLinks = [
 
 export function AppFooter() {
   return (
-    <footer className="mt-12 space-y-8 rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60 md:p-8">
+    <footer className="space-y-8 rounded-4xl border bg-card/70 p-6 backdrop-blur supports-backdrop-filter:bg-card/60 md:p-8">
       <div className="grid gap-10 lg:grid-cols-[1.1fr_1.9fr]">
         <div className="flex flex-col justify-between gap-4">
           <Link className="flex items-center" href="/">
@@ -36,14 +37,27 @@ export function AppFooter() {
             />
           </Link>
           <div className="space-y-2">
+            <div className="group flex h-4 w-fit items-center gap-1">
+              <p className="text-muted-foreground text-sm">
+                Developed for &#x1F1F5;&#x1F1F0; by
+              </p>
+              <div className="flex items-center gap-0.5">
+                <a
+                  className="text-muted-foreground text-sm underline-offset-4 transition-all duration-200 group-hover:text-white group-hover:underline"
+                  href="https://azizurrehman.com"
+                  rel="noopener"
+                  target="_blank"
+                >
+                  azizurrehman.com
+                </a>
+                <ArrowUpRight
+                  className="h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                  width={16}
+                />
+              </div>
+            </div>
             <p className="text-muted-foreground text-sm">
-              Developed by{" "}
-              <a href="https://azizurrehman.com" rel="noopener" target="_blank">
-                azizurrehman.com
-              </a>{" "}
-            </p>
-            <p className="text-muted-foreground text-sm">
-              © 2026 TodayPriceInPakistan.com
+              &#xa9; 2026 TodayPriceInPakistan.com
             </p>
           </div>
         </div>
@@ -54,7 +68,7 @@ export function AppFooter() {
               {commodityLinks.map((item) => (
                 <li key={item.href}>
                   <Link
-                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-muted-foreground transition-colors duration-200 hover:text-foreground"
                     href={item.href}
                   >
                     {item.label}
@@ -70,7 +84,7 @@ export function AppFooter() {
               {companyLinks.map((item) => (
                 <li key={item.href}>
                   <Link
-                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-muted-foreground transition-colors duration-200 hover:text-foreground"
                     href={item.href}
                   >
                     {item.label}
@@ -86,7 +100,7 @@ export function AppFooter() {
               {legalLinks.map((item) => (
                 <li key={item.href}>
                   <Link
-                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-muted-foreground transition-colors duration-200 hover:text-foreground"
                     href={item.href}
                   >
                     {item.label}
