@@ -1,4 +1,5 @@
 import { AppLastUpdated } from "@/app/_components/last-updated";
+import { AppPageBadge } from "@/app/_components/page-badge";
 
 export const metadata = {
   title: "Terms of Use - TodayPriceInPakistan.com",
@@ -11,9 +12,7 @@ export default function TermsOfUsePage() {
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-slate-200/10 via-transparent to-transparent" />
         <div className="relative space-y-3">
-          <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-            Legal
-          </p>
+          <AppPageBadge value="Legal" />
           <h1 className="font-semibold text-4xl">Terms of Use</h1>
           <AppLastUpdated dateAndTime={new Date("June 1, 2026")} />
         </div>

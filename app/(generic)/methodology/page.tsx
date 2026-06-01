@@ -1,3 +1,5 @@
+import { AppPageBadge } from "@/app/_components/page-badge";
+
 export const metadata = {
   title: "Methodology - TodayPriceInPakistan.com",
   description:
@@ -10,9 +12,7 @@ export default function MethodologyPage() {
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-slate-200/10 via-transparent to-transparent" />
         <div className="relative space-y-3">
-          <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-            Editorial
-          </p>
+          <AppPageBadge value="Company" />
           <h1 className="font-semibold text-4xl">Methodology</h1>
           <p className="text-muted-foreground text-sm">
             This page explains how we gather and present rates to keep updates

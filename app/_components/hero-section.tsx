@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { AppLastUpdated } from "@/app/_components/last-updated";
-import { Pulse } from "@/app/_components/pulse";
+import { AppLiveIndicator } from "@/app/_components/live-indicator";
+import { AppPageBadge } from "@/app/_components/page-badge";
 import { cn } from "@/lib/utils";
 
 export function HeroSection({
@@ -28,15 +29,13 @@ export function HeroSection({
       <div className="relative space-y-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="space-y-2">
+            <AppPageBadge value="Commodities" />
             <div className="flex items-center gap-2">
-              <Pulse />
-              <p className="text-[12px] text-emerald-300 uppercase tracking-widest">
-                Live
-              </p>
+              <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
+                {title}
+              </h1>
+              <AppLiveIndicator />
             </div>
-            <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
-              {title}
-            </h1>
             <p className="text-muted-foreground text-sm">{description}</p>
             <AppLastUpdated dateAndTime={updatedAt} />
           </div>

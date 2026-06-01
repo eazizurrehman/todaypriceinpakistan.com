@@ -62,7 +62,6 @@ export default async function GoldRateTodayPage() {
         />
 
         <AdSlot />
-        <AdSlot />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { AdSlot } from "@/app/_components/ad-slot";
+import { AppPageBadge } from "@/app/_components/page-badge";
 import { DataTable } from "@/app/_components/table";
 import {
   type GoldRateRow,
@@ -50,6 +51,7 @@ export default async function GoldComparisonPage() {
         <div className="relative space-y-10">
           <div className="flex justify-between gap-4">
             <div className="space-y-2">
+              <AppPageBadge value="Commodities" />
               <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
                 Gold Comparison
               </h1>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AdSlot } from "@/app/_components/ad-slot";
+import { AppLiveIndicator } from "@/app/_components/live-indicator";
 
 const priceCategories = [
   {
@@ -133,15 +134,7 @@ export default function Home() {
                   />
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <h3 className="font-semibold text-lg">{category.title}</h3>
-                    <span
-                      className={`shrink-0 rounded-full border px-3 py-1 text-xs ${
-                        isLive
-                          ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-200"
-                          : "border-border/70 text-muted-foreground"
-                      }`}
-                    >
-                      {category.status}
-                    </span>
+                    <AppLiveIndicator />
                   </div>
                   <p className="mt-2 text-muted-foreground text-sm">
                     {category.description}

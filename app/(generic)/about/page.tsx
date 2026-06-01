@@ -1,3 +1,5 @@
+import { AppPageBadge } from "@/app/_components/page-badge";
+
 export const metadata = {
   title: "About - TodayPriceInPakistan.com",
   description:
@@ -10,9 +12,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-amber-200/10 via-transparent to-transparent" />
         <div className="relative space-y-3">
-          <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-            Company
-          </p>
+          <AppPageBadge value="Company" />
           <h1 className="font-semibold text-4xl">About Us</h1>
           <p className="text-muted-foreground text-sm">
             TodayPriceInPakistan.com is a focused commodity price hub designed

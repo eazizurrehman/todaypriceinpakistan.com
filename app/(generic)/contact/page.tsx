@@ -1,3 +1,5 @@
+import { AppPageBadge } from "@/app/_components/page-badge";
+
 export const metadata = {
   title: "Contact - TodayPriceInPakistan.com",
   description:
@@ -10,22 +12,12 @@ export default function ContactPage() {
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-emerald-200/10 via-transparent to-transparent" />
         <div className="relative space-y-3">
-          <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-            Contact
-          </p>
+          <AppPageBadge value="Company" />
           <h1 className="font-semibold text-4xl">Get in touch</h1>
           <p className="text-muted-foreground text-sm">
             If you notice a pricing issue, want to discuss partnerships, or have
             a general question, contact us using the details below.
           </p>
-          <div className="flex flex-wrap gap-2 text-muted-foreground text-xs">
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Response within 24-48 hours
-            </span>
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Friendly support
-            </span>
-          </div>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getGoldPricesPakistan } from "@/actions/gold-prices-pakistan";
 import { AdSlot } from "@/app/_components/ad-slot";
+import { AppPageBadge } from "@/app/_components/page-badge";
 import { GoldZakatCalculator } from "@/app/(modules)/gold/calculators/_gold-zakat-converter";
 
 export default async function GoldZakatCalculatorPage() {
@@ -13,6 +14,7 @@ export default async function GoldZakatCalculatorPage() {
         <div className="relative space-y-10">
           <div className="flex justify-between gap-4">
             <div className="space-y-2">
+              <AppPageBadge value="Commodities" />
               <h1 className="font-semibold text-4xl leading-tight md:text-5xl">
                 Gold Zakat Calculator
               </h1>

@@ -1,3 +1,6 @@
+import { AppLastUpdated } from "@/app/_components/last-updated";
+import { AppPageBadge } from "@/app/_components/page-badge";
+
 export const metadata = {
   title: "Disclaimer - TodayPriceInPakistan.com",
   description:
@@ -10,15 +13,9 @@ export default function DisclaimerPage() {
       <section className="relative overflow-hidden rounded-4xl border bg-card/70 p-7">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-rose-200/10 via-transparent to-transparent" />
         <div className="relative space-y-3">
-          <p className="text-[11px] text-muted-foreground uppercase tracking-wide">
-            Legal
-          </p>
+          <AppPageBadge value="Legal" />
           <h1 className="font-semibold text-4xl">Disclaimer</h1>
-          <div className="flex flex-wrap gap-2 text-muted-foreground text-xs">
-            <span className="rounded-full border border-border/70 px-3 py-1">
-              Informational content only
-            </span>
-          </div>
+          <AppLastUpdated dateAndTime={new Date("June 1, 2026")} />
         </div>
       </section>
 
