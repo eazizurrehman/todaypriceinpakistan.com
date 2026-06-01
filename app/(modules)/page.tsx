@@ -41,6 +41,13 @@ const priceCategories = [
   },
 ];
 
+const marketSummary = [
+  { label: "USD → PKR", value: "278.34" },
+  { label: "Gold Ounce (USD)", value: "$4,438.06" },
+  { label: "Today High", value: "$4,466.69" },
+  { label: "Today Low", value: "$4,438.06" },
+];
+
 function StatChip({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-3xl border bg-card/70 px-4 py-3 backdrop-blur supports-backdrop-filter:bg-card/60">
@@ -154,7 +161,7 @@ export default function Home() {
                 </div>
               );
             })}
-            <AdSlot variant="leaderboard" />
+            <AdSlot />
           </div>
         </div>
       </section>
@@ -187,6 +194,25 @@ export default function Home() {
             </div>
           </div>
           <AdSlot />
+
+          <div className="rounded-4xl border bg-card/70 p-6">
+            <h3 className="font-semibold text-lg">Market summary</h3>
+            <div className="mt-4 space-y-3">
+              {marketSummary.map((item) => (
+                <div
+                  className="flex items-center justify-between rounded-3xl border bg-background/25 px-4 py-3"
+                  key={item.label}
+                >
+                  <span className="text-muted-foreground text-sm">
+                    {item.label}
+                  </span>
+                  <span className="font-medium text-foreground text-sm">
+                    {item.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

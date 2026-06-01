@@ -25,7 +25,6 @@ export const sidebarSections: TSection[] = [
     title: "General",
     links: [
       { label: "Comparison", href: "/gold/comparison" },
-      { label: "Sources", href: "/gold/sources" },
       { label: "Guide", href: "/gold/guide" },
       { label: "Disclaimer", href: "/gold/disclaimer" },
     ],

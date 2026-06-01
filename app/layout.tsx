@@ -67,7 +67,7 @@ export default function RootLayout({
         <main className="container mx-auto grid grid-cols-1 gap-8 px-4 lg:grid-cols-[14rem_minmax(0,1fr)_14rem]">
           <aside className="hidden lg:block">
             <div className="sticky top-6">
-              <AdSlot variant="sidebar" />
+              <AdSlot />
             </div>
           </aside>
           <div>
@@ -75,12 +75,12 @@ export default function RootLayout({
             {children}
             <div className="space-y-10 pb-10">
               <AppFooter />
-              <AdSlot variant="inline" />
+              <AdSlot />
             </div>
           </div>
           <aside className="hidden lg:block">
             <div className="sticky top-6">
-              <AdSlot variant="sidebar" />
+              <AdSlot />
             </div>
           </aside>
         </main>
